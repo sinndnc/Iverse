@@ -6,9 +6,12 @@ object Dependencies {
 
     //GOOGLE
     const val googleMaterial = "com.google.android.material:material:${Versions.APPCOMPAT_VERSION}"
+    const val googleServices = "com.google.android.gms:play-services-auth:${Versions.GOOGLE_SERVICES}"
+
+    //STORAGE(must have alias key)
+    const val dataStore = "androidx.datastore:datastore-preferences:${Versions.DATASTORE_VERSION}"
 
     //STORAGE
-    const val dataStore = "androidx.datastore:datastore-preferences:${Versions.DATASTORE_VERSION}"
     const val encryptedPreference = "androidx.security:security-crypto:${Versions.ENCRYPTED_VERSION}"
 
     //COMPOSE

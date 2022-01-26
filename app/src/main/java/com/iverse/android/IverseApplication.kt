@@ -1,6 +1,7 @@
 package com.iverse.android
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-class IverseApplication : Application() {
-}
+@HiltAndroidApp
+class IverseApplication : Application()

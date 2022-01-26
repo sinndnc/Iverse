@@ -1,6 +1,6 @@
 plugins {
     id(IdPlugin.android)
-    id(IdPlugin.application)
+    id(IdPlugin.library)
     kotlin(IdPlugin.kapt)
     id(IdPlugin.hilt)
 }
@@ -9,12 +9,8 @@ android {
     compileSdk = Config.targetSdk
 
     defaultConfig {
-        applicationId = Config.appId
         minSdk = Config.minSdk
         targetSdk = Config.targetSdk
-        versionCode = Config.versionCode
-        versionName = Config.versionName
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -25,13 +21,10 @@ android {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
             )
         }
-    }
-    buildFeatures {
-        compose = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -39,9 +32,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = Versions.COMPOSE_VERSION
     }
     packagingOptions {
         resources.excludes.add("META-INF/AL2.0")
@@ -54,31 +44,24 @@ kapt {
 }
 
 dependencies {
-
-    //MODULES
-    implementation(project(Modules.core))
-    implementation(project(Modules.feature))
+    //CORE
+    implementation(Dependencies.core)
+    implementation(Dependencies.appCompat)
+    implementation(Dependencies.googleMaterial)
 
     //HILT
     implementation(Dependencies.hiltAndroid)
     kapt(Dependencies.hiltCompiler)
 
     //COMPOSE
+    implementation(Dependencies.composeUi)
+    implementation(Dependencies.composeMaterial)
+    implementation(Dependencies.composePreview)
     implementation(Dependencies.compose)
 
-    //GOOGLE
-    implementation(Dependencies.googleServices)
-
-    //CORE
-    implementation(Dependencies.core)
-    implementation(Dependencies.appCompat)
-    implementation(Dependencies.googleMaterial)
-    implementation(Dependencies.lifecycle)
 
     //TEST
     testImplementation(TestDependencies.junit)
     androidTestImplementation(AndroidTestDependencies.junit)
     androidTestImplementation(AndroidTestDependencies.espresso)
-    androidTestImplementation(AndroidTestDependencies.compose)
-    debugImplementation(DebugDependencies.compose)
 }

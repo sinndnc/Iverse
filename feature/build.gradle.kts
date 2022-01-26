@@ -1,6 +1,6 @@
 plugins {
     id(IdPlugin.android)
-    id(IdPlugin.application)
+    id(IdPlugin.library)
     kotlin(IdPlugin.kapt)
     id(IdPlugin.hilt)
 }
@@ -9,12 +9,8 @@ android {
     compileSdk = Config.targetSdk
 
     defaultConfig {
-        applicationId = Config.appId
         minSdk = Config.minSdk
         targetSdk = Config.targetSdk
-        versionCode = Config.versionCode
-        versionName = Config.versionName
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -55,16 +51,22 @@ kapt {
 
 dependencies {
 
-    //MODULES
-    implementation(project(Modules.core))
-    implementation(project(Modules.feature))
+    //MODULE
+    implementation(project(mapOf("path" to ":core")))
+
+    //COMPOSE
+    implementation(Dependencies.composeUi)
+    implementation(Dependencies.composeMaterial)
+    implementation(Dependencies.composePreview)
+    implementation(Dependencies.compose)
+
+    //NAVIGATION
+    implementation(Dependencies.hiltNavigation)
+    implementation(Dependencies.navigation)
 
     //HILT
     implementation(Dependencies.hiltAndroid)
     kapt(Dependencies.hiltCompiler)
-
-    //COMPOSE
-    implementation(Dependencies.compose)
 
     //GOOGLE
     implementation(Dependencies.googleServices)
@@ -73,12 +75,9 @@ dependencies {
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.googleMaterial)
-    implementation(Dependencies.lifecycle)
 
     //TEST
     testImplementation(TestDependencies.junit)
     androidTestImplementation(AndroidTestDependencies.junit)
     androidTestImplementation(AndroidTestDependencies.espresso)
-    androidTestImplementation(AndroidTestDependencies.compose)
-    debugImplementation(DebugDependencies.compose)
 }

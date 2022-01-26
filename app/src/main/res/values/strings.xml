@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Iverse</string>
+    <string name="google_api_web_token">496864884033-snsu4jbea9lqmeeftdljtnh0p1rpncfp.apps.googleusercontent.com</string>
 </resources>

@@ -5,6 +5,9 @@ object Versions {
     const val APPCOMPAT_VERSION = "1.4.0"
     const val LIFECYCLE_VERSION = "2.4.0"
 
+    //GOOGLE
+    const val GOOGLE_SERVICES = "20.0.1"
+
     //STORAGE
     const val DATASTORE_VERSION = "1.0.0"
     const val ENCRYPTED_VERSION = "1.0.0"
