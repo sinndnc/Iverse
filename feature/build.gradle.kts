@@ -50,6 +50,7 @@ kapt {
 }
 
 dependencies {
+    implementation("com.jakewharton.timber:timber:5.0.1")
 
     //MODULE
     implementation(project(mapOf("path" to ":core")))
@@ -70,6 +71,7 @@ dependencies {
 
     //GOOGLE
     implementation(Dependencies.googleServices)
+    implementation(Dependencies.googlePhoneServices)
 
     //CORE
     implementation(Dependencies.core)
@@ -78,6 +80,7 @@ dependencies {
 
     //TEST
     testImplementation(TestDependencies.junit)
+    debugImplementation(DebugDependencies.compose)
     androidTestImplementation(AndroidTestDependencies.junit)
     androidTestImplementation(AndroidTestDependencies.espresso)
 }

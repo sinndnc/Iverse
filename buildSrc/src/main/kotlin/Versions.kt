@@ -7,6 +7,7 @@ object Versions {
 
     //GOOGLE
     const val GOOGLE_SERVICES = "20.0.1"
+    const val GOOGLE_PHONE_SERVICES = "18.0.1"
 
     //STORAGE
     const val DATASTORE_VERSION = "1.0.0"

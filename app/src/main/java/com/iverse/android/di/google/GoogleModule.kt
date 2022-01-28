@@ -1,4 +1,4 @@
-package com.iverse.android.di
+package com.iverse.android.di.google
 
 import android.content.Context
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
@@ -31,14 +31,10 @@ object GoogleModule {
             .requestEmail()
             .build()
 
-
     @Provides
     @Singleton
     fun provideGoogleSignInMethod(@ApplicationContext context: Context, gso: GoogleSignInOptions)
             : GoogleSignInClient = GoogleSignIn.getClient(context, gso);
-
-
-    //GOOGLE ONE TAP SIGN IN AND SIGN UP
 
     @Provides
     @Singleton
@@ -49,26 +45,6 @@ object GoogleModule {
     @Singleton
     fun provideServerWebId(@ApplicationContext context: Context): String =
         context.getString(R.string.google_api_web_token)
-
-
-    @SignIn
-    @Provides
-    @Singleton
-    fun provideSignInRequest(clientId: String): BeginSignInRequest = BeginSignInRequest.builder()
-        .setPasswordRequestOptions(
-            BeginSignInRequest.PasswordRequestOptions.builder()
-                .setSupported(true)
-                .build()
-        )
-        .setGoogleIdTokenRequestOptions(
-            BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-                .setSupported(true)
-                .setServerClientId(clientId)
-                .setFilterByAuthorizedAccounts(true)
-                .build()
-        )
-        .setAutoSelectEnabled(true)
-        .build()
 
 
     @SignUp

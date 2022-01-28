@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Iverse</string>
+    <string name="welcome_text">Welcome back</string>
+    <string name="create_account_text">Create an account</string>
+    <string name="login_facebook_text">Login with Facebook</string>
+    <string name="login_google_text">Login with Google</string>
+    <string name="login_email_text">Login with Email and Password</string>
+    <string name="email_text">Email</string>
+    <string name="password_text">Password</string>
+    <string name="login_text">Login</string>
+    <string name="forget_password_text">Did you forget your password ?</string>
+</resources>

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
-import com.iverse.feature.theme.IverseTheme
+import com.iverse.feature.component.theme.IverseTheme
 import com.iverse.feature.navigation.IverseNavGraph
 import dagger.hilt.android.AndroidEntryPoint
 

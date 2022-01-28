@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Iverse</string>
+    <string name="welcome_text">Merhaba</string>
+    <string name="create_account_text">Bir hesap oluştur</string>
+    <string name="login_facebook_text">Facebook ile giriş yap</string>
+    <string name="login_google_text">Google ile girişi yap</string>
+    <string name="login_email_text">Email ve şifre ile giriş yap</string>
+    <string name="email_text">E-posta</string>
+    <string name="password_text">Şifre</string>
+    <string name="login_text">Giriş yap</string>
+    <string name="forget_password_text">"Şifreni mi unuttun "</string>
+</resources>

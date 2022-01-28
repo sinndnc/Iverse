@@ -1,4 +1,4 @@
-package com.iverse.feature.screens.auth
+package com.iverse.feature.presentation.auth.splash
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

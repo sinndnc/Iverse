@@ -68,6 +68,7 @@ dependencies {
 
     //GOOGLE
     implementation(Dependencies.googleServices)
+    implementation(Dependencies.googlePhoneServices)
 
     //CORE
     implementation(Dependencies.core)
