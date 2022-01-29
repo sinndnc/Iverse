@@ -34,8 +34,3 @@ fun LoginIconButton(icon: Int, color: Color = Gray.p900, onClick: () -> Unit) {
 }
 
 
-@Preview
-@Composable
-fun LoginButtonIconPreview() {
-    LoginIconButton(icon = R.drawable.google_logo) {}
-}

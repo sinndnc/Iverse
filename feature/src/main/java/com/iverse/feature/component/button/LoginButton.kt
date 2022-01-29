@@ -11,6 +11,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.iverse.feature.R
+import com.iverse.feature.component.text.ButtonSingleText
 import com.iverse.feature.component.theme.CustomSmallShapes
 
 
@@ -18,25 +19,13 @@ import com.iverse.feature.component.theme.CustomSmallShapes
 fun LoginButton(
     modifier: Modifier = Modifier,
     text: Int,
-    isLoading: MutableState<Boolean> = mutableStateOf(false),
     onClicked: () -> Unit,
 ) {
     Button(
-        modifier = modifier.fillMaxWidth(),
-        contentPadding = PaddingValues(vertical = 16.dp),
+        modifier = modifier.fillMaxWidth().fillMaxHeight(0.25F),
         shape = CustomSmallShapes.medium,
-        onClick = {
-            isLoading.value = true
-            onClicked()
-        }) {
-        if (isLoading.value) CircularProgressIndicator() else Text(text = stringResource(text), color = Color.White)
+        onClick = { onClicked() }) {
+        ButtonSingleText(text)
     }
 
-}
-
-@Preview
-@Composable
-fun LoginButtonPreview() {
-    LoginButton(text = R.string.login_text) {
-    }
 }

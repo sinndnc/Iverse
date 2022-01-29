@@ -51,33 +51,26 @@ kapt {
 
 dependencies {
     implementation("com.jakewharton.timber:timber:5.0.1")
-
     //MODULE
     implementation(project(mapOf("path" to ":core")))
-
     //COMPOSE
     implementation(Dependencies.composeUi)
     implementation(Dependencies.composeMaterial)
     implementation(Dependencies.composePreview)
     implementation(Dependencies.compose)
-
     //NAVIGATION
     implementation(Dependencies.hiltNavigation)
     implementation(Dependencies.navigation)
-
     //HILT
     implementation(Dependencies.hiltAndroid)
     kapt(Dependencies.hiltCompiler)
-
     //GOOGLE
     implementation(Dependencies.googleServices)
     implementation(Dependencies.googlePhoneServices)
-
     //CORE
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.googleMaterial)
-
     //TEST
     testImplementation(TestDependencies.junit)
     debugImplementation(DebugDependencies.compose)

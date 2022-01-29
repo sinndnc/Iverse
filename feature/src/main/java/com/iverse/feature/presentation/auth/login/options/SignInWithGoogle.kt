@@ -21,13 +21,8 @@ fun SignInWithGoogleButton(viewModel: LoginViewModel) {
         when (it.resultCode) {
             Activity.RESULT_OK -> {
                 val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(it.data)
+                //TODO ADD STORAGE MANAGER FOR DATA
                 val result = task.result
-                Timber.d(
-                    " " + result.email + "  *  " + result.account + " *  " + result.displayName + " * " +
-                            " " + result.givenName + " *  " + result.familyName + " *  " + result.id +
-                            "  *  " + result.grantedScopes + "  *  " + result.idToken + "  *  "
-                            + result.isExpired + " " + "*  " + result.serverAuthCode
-                )
                 return@rememberLauncherForActivityResult
             }
             Activity.RESULT_CANCELED -> {

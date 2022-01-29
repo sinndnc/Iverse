@@ -10,10 +10,12 @@ import androidx.navigation.compose.rememberNavController
 import com.iverse.feature.presentation.auth.login.LoginViewModel
 import com.iverse.feature.presentation.auth.login.LoginUI
 import com.iverse.feature.presentation.auth.splash.SplashUI
+import com.iverse.feature.presentation.home.HomeUI
 
 
 @Composable
 fun IverseNavGraph() {
+
     val navController = rememberNavController()
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
@@ -26,6 +28,10 @@ fun IverseNavGraph() {
         composable(Screens.LoginUI.route) {
             val loginViewModel = hiltViewModel<LoginViewModel>()
             LoginUI(navController = navController, loginViewModel = loginViewModel, screenHeight, screenWidth)
+        }
+        composable(Screens.HomeUI.route) {
+            //val loginViewModel = hiltViewModel<LoginViewModel>()
+            HomeUI(navController = navController)
         }
     }
 }

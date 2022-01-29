@@ -10,6 +10,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.Dp
 import androidx.navigation.NavController
+import com.iverse.core.data.entities.auth.login.LoginRequestModel
 import com.iverse.feature.R
 import com.iverse.feature.component.button.LoginButton
 import com.iverse.feature.component.textfield.CustomBasicTextField
@@ -38,7 +39,6 @@ fun LoginBodyView(
             trailingIcon = R.drawable.close,
             placeHolder = "Email"
         ) { if (emailValue.value.isNotEmpty()) emailValue.value = "" }
-
         //******** PASSWORD *********
         CustomBasicTextField(
             value = passwordValue,
@@ -46,9 +46,10 @@ fun LoginBodyView(
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             trailingIcon = if (isVisible) R.drawable.visible else R.drawable.unvisible,
             placeHolder = "Password",
-            // 05442357535
         ) { isVisible = !isVisible }
-        //**********  Login ***********
-        LoginButton(text = R.string.login_text) {}
+        //********** LOGIN ***********
+        LoginButton(text = R.string.login_text) {
+            viewModel.signInWithEmail(LoginRequestModel("sinandinc333@gmail.com", "Snn20012004"), navController)
+        }
     }
 }

@@ -21,7 +21,7 @@ fun LoginBottomView(modifier: Modifier = Modifier, navController: NavController,
         //TODO ADD TO GOOGLE,FACEBOOK etc. INTEGRATION
         SignInWithGoogleButton(viewModel = viewModel)
         LoginIconButton(R.drawable.apple_logo) {}
-        LoginIconButton(R.drawable.facebook_logo) {}
+        LoginIconButton(R.drawable.twitter_logo) {}
         LoginIconButton(R.drawable.gihub_logo) {}
     }
 }

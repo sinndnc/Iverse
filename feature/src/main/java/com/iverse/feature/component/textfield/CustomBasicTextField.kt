@@ -3,10 +3,7 @@ package com.iverse.feature.component.textfield
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -50,7 +47,7 @@ fun CustomBasicTextField(
                     modifier = Modifier.noRippleClickable { onClicked() })
             }
         },
-        placeholder = { Text(placeHolder) },
+        placeholder = { Text(placeHolder, style = MaterialTheme.typography.subtitle2) },
         shape = CustomSmallShapes.medium,
         singleLine = true,
     )
@@ -58,15 +55,3 @@ fun CustomBasicTextField(
 
 }
 
-@Preview
-@Composable
-fun BasicTextFieldPreview() {
-    val value: MutableState<String> = remember { mutableStateOf("") }
-    CustomBasicTextField(
-        value = value,
-        visualTransformation = PasswordVisualTransformation(),
-        keyboardOptions = KeyboardOptions.Default,
-        trailingIcon = R.drawable.visible,
-        placeHolder = "Email"
-    ){}
-}

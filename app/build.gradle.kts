@@ -1,8 +1,9 @@
 plugins {
-    id(IdPlugin.android)
-    id(IdPlugin.application)
-    kotlin(IdPlugin.kapt)
     id(IdPlugin.hilt)
+    id(IdPlugin.android)
+    kotlin(IdPlugin.kapt)
+    id(IdPlugin.application)
+    id(IdPlugin.serialization)
 }
 
 android {
@@ -54,28 +55,29 @@ kapt {
 }
 
 dependencies {
-
     //MODULES
     implementation(project(Modules.core))
     implementation(project(Modules.feature))
-
     //HILT
     implementation(Dependencies.hiltAndroid)
     kapt(Dependencies.hiltCompiler)
-
     //COMPOSE
     implementation(Dependencies.compose)
-
     //GOOGLE
     implementation(Dependencies.googleServices)
     implementation(Dependencies.googlePhoneServices)
-
     //CORE
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
     implementation(Dependencies.googleMaterial)
     implementation(Dependencies.lifecycle)
-
+    //JETBRAINS
+    implementation(Dependencies.jetBrainsKotlin)
+    //KTOR
+    implementation(Dependencies.ktorCio)
+    implementation(Dependencies.ktorCore)
+    implementation(Dependencies.ktorSerialization)
+    implementation(Dependencies.jetBrainSerialization)
     //TEST
     testImplementation(TestDependencies.junit)
     androidTestImplementation(AndroidTestDependencies.junit)

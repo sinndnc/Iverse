@@ -40,14 +40,14 @@ val OpenSansTypography = Typography(
     ),
     //SINGLE BUTTON TEXT
     subtitle1 = TextStyle(
-        color = Gray.p300,
+        color = Gray.p200,
         fontFamily = OpenSans,
         fontWeight = FontWeight.SemiBold,
         fontSize = 16.sp
     ),
-    //TEXTFIELD LABEL TEXT
+    //TEXT FIELD LABEL TEXT
     subtitle2 = TextStyle(
-        color = Gray.p400,
+        color = Gray.p600,
         fontFamily = OpenSans,
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp

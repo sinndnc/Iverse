@@ -8,16 +8,18 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun Container(
     alignment: Alignment = Alignment.Center,
+    color: Color = MaterialTheme.colors.background,
     content: @Composable BoxScope.() -> Unit,
 ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colors.background),
+            .background(color),
         contentAlignment = alignment
     ) {
         content()
