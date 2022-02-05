@@ -21,7 +21,6 @@ import com.iverse.feature.component.text.HeaderText
 @Composable
  fun LoginHeaderView(
     modifier: Modifier = Modifier,
-    navController: NavController,
     focus: FocusManager,
 ) {
     Column(

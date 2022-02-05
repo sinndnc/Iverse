@@ -19,6 +19,7 @@ object Dependencies {
     const val compose = "androidx.activity:activity-compose:${Versions.APPCOMPAT_VERSION}"
     const val composeUi = "androidx.compose.ui:ui:${Versions.COMPOSE_VERSION}"
     const val composeMaterial = "androidx.compose.material:material:${Versions.COMPOSE_VERSION}"
+    const val composeLivedata =  "androidx.compose.runtime:runtime-livedata:${Versions.COMPOSE_VERSION}"
     const val composePreview = "androidx.compose.ui:ui-tooling-preview:${Versions.COMPOSE_VERSION}"
 
     //NAVIGATION

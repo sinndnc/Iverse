@@ -1,6 +1,5 @@
 package com.iverse.feature.component.textfield
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -8,10 +7,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
-import com.iverse.feature.R
 import com.iverse.feature.component.theme.CustomSmallShapes
 import com.iverse.feature.component.theme.Gray
 import com.iverse.feature.extensions.noRippleClickable
@@ -20,7 +16,7 @@ import com.iverse.feature.extensions.noRippleClickable
 @Composable
 fun CustomBasicTextField(
     value: MutableState<String>,
-    isEnabled: Boolean = true,
+    isEnabled: Boolean,
     placeHolder: String,
     visualTransformation: VisualTransformation,
     keyboardOptions: KeyboardOptions,
@@ -31,7 +27,7 @@ fun CustomBasicTextField(
     TextField(
         value = value.value,
         onValueChange = { value.value = it },
-        enabled = isEnabled,
+        enabled = !isEnabled,
         modifier = Modifier.fillMaxWidth(),
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Gray.p900,

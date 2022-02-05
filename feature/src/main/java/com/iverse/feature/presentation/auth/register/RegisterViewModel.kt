@@ -20,6 +20,7 @@ class RegisterViewModel @Inject constructor(
 
 
     fun getCredential(data: Intent?) = signInClient.getSignInCredentialFromIntent(data)
+
     fun signUpWithGoogle(launcher: ManagedActivityResultLauncher<IntentSenderRequest, ActivityResult>) {
         signInClient.beginSignIn(signUpRequest).addOnSuccessListener { result ->
             try {

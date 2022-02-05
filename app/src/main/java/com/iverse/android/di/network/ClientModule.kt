@@ -1,7 +1,7 @@
-package com.iverse.android.di.google
+package com.iverse.android.di.network
 
-import com.iverse.core.data.remote.auth.login.LoginRemoteService
-import com.iverse.core.data.repository.auth.login.LoginRepository
+import com.iverse.core.domain.repository.auth.login.LoginRepository
+import com.iverse.core.data.repository.auth.login.LoginRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +15,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
+object ClientModule {
 
     @Provides
     @Singleton
@@ -28,8 +28,8 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideLoginRepository(client: HttpClient): LoginRemoteService =
-        LoginRepository(client = client)
+    fun provideLoginRepository(client: HttpClient): LoginRepository =
+        LoginRepositoryImpl(client = client)
 
 
 }

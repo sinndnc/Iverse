@@ -12,7 +12,7 @@ import com.iverse.feature.presentation.auth.login.LoginViewModel
 import com.iverse.feature.presentation.auth.login.options.SignInWithGoogleButton
 
 @Composable
-fun LoginBottomView(modifier: Modifier = Modifier, navController: NavController, viewModel: LoginViewModel) {
+fun LoginBottomView(modifier: Modifier = Modifier, viewModel: LoginViewModel) {
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.SpaceEvenly,

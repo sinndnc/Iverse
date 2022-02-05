@@ -35,7 +35,5 @@ fun SignInWithGoogleButton(viewModel: LoginViewModel) {
         }
     }
 
-    LoginIconButton(R.drawable.google_logo) {
-        viewModel.signInWithGoogle(googleSignInLauncher)
-    }
+    LoginIconButton(R.drawable.google_logo) {}
 }

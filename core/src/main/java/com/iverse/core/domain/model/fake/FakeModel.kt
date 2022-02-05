@@ -1,4 +1,4 @@
-package com.iverse.core.data.entities.fake
+package com.iverse.core.domain.model.fake
 
 import kotlinx.serialization.Serializable
 

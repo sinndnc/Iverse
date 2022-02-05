@@ -11,9 +11,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = AppConstant.LOCAL_STORAGE_NAME)
-
 
 class StorageManagerImpl @Inject constructor(@ApplicationContext private val context : Context) : StorageManager(){
 

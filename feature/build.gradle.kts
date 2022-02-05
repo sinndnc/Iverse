@@ -58,6 +58,7 @@ dependencies {
     implementation(Dependencies.composeMaterial)
     implementation(Dependencies.composePreview)
     implementation(Dependencies.compose)
+    implementation(Dependencies.composeLivedata)
     //NAVIGATION
     implementation(Dependencies.hiltNavigation)
     implementation(Dependencies.navigation)

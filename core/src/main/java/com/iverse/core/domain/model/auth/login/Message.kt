@@ -1,4 +1,4 @@
-package com.iverse.core.data.entities.auth.login
+package com.iverse.core.domain.model.auth.login
 
 import kotlinx.serialization.Serializable
 
