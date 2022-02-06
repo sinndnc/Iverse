@@ -1,4 +1,6 @@
-package com.iverse.core.base
+package com.iverse.core.utils.resources
+
+
 
 import androidx.lifecycle.LiveData
 import kotlinx.serialization.Serializable

@@ -1,6 +1,8 @@
 package com.iverse.android.di.use_case
 
 import android.content.Context
+import com.iverse.core.data.local.storage.StorageManager
+import com.iverse.core.data.local.storage.StorageManagerImpl
 import com.iverse.core.domain.repository.auth.login.LoginRepository
 import com.iverse.core.domain.usecase.login.email.GetUserInformationUseCase
 import com.iverse.core.domain.usecase.login.email.GetUserInformationUseCaseImpl
@@ -22,8 +24,9 @@ object UseCaseModule {
 
     @Provides
     @Singleton
-    fun provideSetUserInformationUseCase(): SetUserInformationUseCase =
-        SetUserInformationUseCaseImpl()
+    fun provideSetUserInformationUseCase(
+        @ApplicationContext context: Context
+    ): SetUserInformationUseCase = SetUserInformationUseCaseImpl(StorageManagerImpl(context))
 
 
     @Provides
@@ -34,9 +37,10 @@ object UseCaseModule {
     ): GetUserInformationUseCase =
         GetUserInformationUseCaseImpl(setUserInformationUseCase, loginRepository)
 
-
     @Provides
     @Singleton
-    fun provideCheckNetworkUseCase(@ApplicationContext context: Context): CheckNetworkUseCase =
-        CheckNetworkUseCaseImpl(NetworkManager(context))
+    fun provideCheckNetworkUseCase(
+        @ApplicationContext context: Context
+    ): CheckNetworkUseCase = CheckNetworkUseCaseImpl(NetworkManager(context))
+
 }

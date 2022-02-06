@@ -9,8 +9,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.iverse.feature.presentation.auth.login.LoginViewModel
 import com.iverse.feature.presentation.auth.login.LoginUI
+import com.iverse.feature.presentation.auth.onboard.OnBoardUI
+import com.iverse.feature.presentation.auth.onboard.OnBoardViewModel
 import com.iverse.feature.presentation.auth.splash.SplashUI
 import com.iverse.feature.presentation.home.HomeUI
+import com.iverse.feature.presentation.home.HomeViewModel
 
 
 @Composable
@@ -25,13 +28,17 @@ fun IverseNavGraph() {
         composable(Screens.SplashUI.route) {
             SplashUI(navController = navController)
         }
+        composable(Screens.OnBoardUI.route) {
+            val onBoardViewModel = hiltViewModel<OnBoardViewModel>()
+            OnBoardUI(navController = navController, viewModel = onBoardViewModel)
+        }
         composable(Screens.LoginUI.route) {
             val loginViewModel = hiltViewModel<LoginViewModel>()
-            LoginUI(navController = navController, loginViewModel = loginViewModel, screenHeight, screenWidth)
+            LoginUI(navController = navController, viewModel = loginViewModel, screenHeight, screenWidth)
         }
         composable(Screens.HomeUI.route) {
-            //val loginViewModel = hiltViewModel<LoginViewModel>()
-            HomeUI(navController = navController)
+            val homeViewModel = hiltViewModel<HomeViewModel>()
+            HomeUI(navController = navController, viewModel = homeViewModel)
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.iverse.core.base
+package com.iverse.core.utils.state
 
 
 sealed class UiState {

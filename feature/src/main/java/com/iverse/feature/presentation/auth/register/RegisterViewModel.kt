@@ -12,6 +12,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 
+//TODO EDIT THIS CLASS
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
     private val signInClient: SignInClient,

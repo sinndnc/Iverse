@@ -13,6 +13,7 @@ import com.iverse.core.domain.model.auth.login.LoginRequestModel
 import com.iverse.feature.R
 import com.iverse.feature.component.button.LoginButton
 import com.iverse.feature.component.textfield.CustomBasicTextField
+import com.iverse.feature.navigation.Screens
 import com.iverse.feature.presentation.auth.login.LoginViewModel
 
 //TODO EDIT THIS CLASS
@@ -20,9 +21,12 @@ import com.iverse.feature.presentation.auth.login.LoginViewModel
 fun LoginBodyView(
     modifier: Modifier = Modifier,
     viewModel: LoginViewModel,
+    navController: NavController,
 ) {
     val emailValue: MutableState<String> = remember { mutableStateOf("") }
     val passwordValue: MutableState<String> = remember { mutableStateOf("") }
+    val isProcess = viewModel.isLoading.value || viewModel.isPopUp.value
+    //password visibility
     var isVisible by remember { mutableStateOf(false) }
 
     Column(
@@ -32,7 +36,7 @@ fun LoginBodyView(
         //********* EMAIL **********
         CustomBasicTextField(
             value = emailValue,
-            isEnabled = true,
+            isEnabled = isProcess,
             visualTransformation = VisualTransformation.None,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             trailingIcon = R.drawable.close,
@@ -41,15 +45,15 @@ fun LoginBodyView(
         //******** PASSWORD *********
         CustomBasicTextField(
             value = passwordValue,
-            isEnabled = true,
+            isEnabled = isProcess,
             visualTransformation = if (isVisible) PasswordVisualTransformation() else VisualTransformation.None,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             trailingIcon = if (isVisible) R.drawable.visible else R.drawable.unvisible,
             placeHolder = "Password",
         ) { isVisible = !isVisible }
         //********** LOGIN ***********
-        LoginButton(text = R.string.login_text, isEnabled = false) {
-            viewModel.loginWithUseCase(LoginRequestModel("sinandinc333@gmail.com", "Snn20012004"))
+        LoginButton(text = R.string.login_text, isEnabled = isProcess) {
+            viewModel.signInWithEmail(LoginRequestModel("sinandinc333@gmail.com", "Snn20012004"), navController)
         }
     }
 }

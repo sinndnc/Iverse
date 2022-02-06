@@ -7,7 +7,6 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.Dp
 import androidx.navigation.NavController
-import com.iverse.core.utils.connectivity.NetworkState
 import com.iverse.feature.component.view.Container
 import com.iverse.feature.extensions.noRippleClickable
 import com.iverse.feature.presentation.auth.login.views.LoginBodyView
@@ -15,26 +14,28 @@ import com.iverse.feature.presentation.auth.login.views.LoginBottomView
 import com.iverse.feature.presentation.auth.login.views.LoginHeaderView
 
 
-//EDIT THIS CLASS
+//TODO EDIT THIS CLASS
 @Composable
 fun LoginUI(
     navController: NavController,
-    loginViewModel: LoginViewModel,
+    viewModel: LoginViewModel,
     screenHeight: Dp,
     screenWidth: Dp,
 ) {
     val focusManager = LocalFocusManager.current
+    val isHasInternet = viewModel.isNetwork.value
+    val isProcess = viewModel.isLoading.value || viewModel.isPopUp.value
 
-    Container(isProcess = false, isHasInternet = NetworkState.CONNECTED) {
+    Container(isProcess = isProcess, isHasInternet = isHasInternet) {
         Column(
             modifier = Modifier.fillMaxSize().noRippleClickable { focusManager.clearFocus() }
                 .padding(horizontal = screenWidth * 0.07F, vertical = screenHeight * 0.02F)
-                .alpha(if (false) 0.2F else 1F),
+                .alpha(if (isProcess) 0.2F else 1F),
             verticalArrangement = Arrangement.Center,
         ) {
             LoginHeaderView(modifier = Modifier.weight(1.2F, true), focusManager)
-            LoginBodyView(modifier = Modifier.weight(2F, true),loginViewModel)
-            LoginBottomView(Modifier.fillMaxSize().weight(2F, true),loginViewModel)
+            LoginBodyView(modifier = Modifier.weight(2F, true), viewModel, navController)
+            LoginBottomView(Modifier.fillMaxSize().weight(2F, true), viewModel)
         }
     }
 

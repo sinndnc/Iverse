@@ -1,10 +1,8 @@
 package com.iverse.core.utils.connectivity
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.net.*
 import android.os.CountDownTimer
-import android.util.Log
 import androidx.lifecycle.LiveData
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.IOException
@@ -17,7 +15,6 @@ enum class NetworkState { CONNECTED, UNCONNECTED, RECONNECTED , SAFECONNECTED }
 
 //TODO ADD DOES HAVE INTERNET OBJECT
 class NetworkManager(private val connectivityManager: ConnectivityManager) : LiveData<NetworkState>() {
-    val TAG = "NetworkReceiverTest"
 
     @Inject
     constructor(@ApplicationContext context: Context) : this(context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)

@@ -1,11 +1,14 @@
 package com.iverse.core.base
 
+import androidx.compose.runtime.MutableState
+import androidx.lifecycle.ViewModel
+import com.iverse.core.utils.connectivity.NetworkManager
 import com.iverse.core.utils.connectivity.NetworkState
 
-interface BaseViewModel {
+abstract class BaseViewModel : ViewModel() {
 
-    var isLoading: Boolean
-    var isPopUp: Boolean
-    var isNetwork: NetworkState
+    abstract val isLoading: MutableState<Boolean>
+    abstract val isPopUp: MutableState<Boolean>
+    abstract val isNetwork: MutableState<NetworkState>
 
 }

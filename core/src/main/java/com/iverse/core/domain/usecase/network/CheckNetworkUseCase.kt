@@ -1,8 +1,9 @@
 package com.iverse.core.domain.usecase.network
 
+import androidx.compose.runtime.MutableState
 import com.iverse.core.utils.connectivity.NetworkState
 
 interface CheckNetworkUseCase {
 
-    operator fun invoke() : NetworkState
+    val isNetwork : MutableState<NetworkState>
 }

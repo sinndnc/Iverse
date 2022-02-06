@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.iverse.feature.component.text.ButtonSingleText
 import com.iverse.feature.component.theme.CustomSmallShapes
 
 

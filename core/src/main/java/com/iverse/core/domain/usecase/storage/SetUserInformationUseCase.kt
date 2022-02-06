@@ -4,5 +4,5 @@ import com.iverse.core.domain.model.auth.login.LoginResponseModel
 
 interface SetUserInformationUseCase {
 
-    operator fun invoke(model : LoginResponseModel?)
+    suspend operator fun invoke(model : LoginResponseModel?)
 }
