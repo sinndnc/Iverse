@@ -12,6 +12,7 @@ import com.iverse.feature.navigation.Screens
 
 @Composable
 fun SplashUI(navController: NavController) {
+
     val token = StorageManagerImpl(LocalContext.current)
         .readBooleanData(AuthPreferencesKeys.ISTOKEN)
         .collectAsState(initial = false)
@@ -19,8 +20,7 @@ fun SplashUI(navController: NavController) {
     LaunchedEffect(Unit) {
         navController.navigate(
             if (token.value == true)
-                Screens.HomeUI.route else Screens.OnBoardUI.route
-        )
+                Screens.HomeUI.route else Screens.OnBoardUI.route)
         {
             popUpTo(Screens.SplashUI.route) { inclusive = true }
         }

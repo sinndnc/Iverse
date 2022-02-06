@@ -40,7 +40,7 @@ class LoginViewModel @Inject constructor(
                 Status.SUCCESS -> {
                     isLoading.value = false
                     navController.navigate(route = Screens.HomeUI.route) {
-                        popUpTo(Screens.LoginUI.route) { inclusive = true }
+                        popUpTo(Screens.OnBoardUI.route) { inclusive = true }
                     }
                 }
                 else -> isLoading.value = false

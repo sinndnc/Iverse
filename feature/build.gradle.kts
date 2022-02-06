@@ -59,6 +59,8 @@ dependencies {
     implementation(Dependencies.composePreview)
     implementation(Dependencies.compose)
     implementation(Dependencies.composeLivedata)
+    //DATASTORE
+    implementation(Dependencies.dataStore)
     //NAVIGATION
     implementation(Dependencies.hiltNavigation)
     implementation(Dependencies.navigation)

@@ -1,9 +1,9 @@
 package com.iverse.core.data.repository.auth.login
 
-import com.iverse.core.base.Resource
 import com.iverse.core.domain.model.auth.login.LoginRequestModel
 import com.iverse.core.domain.model.auth.login.LoginResponseModel
 import com.iverse.core.domain.repository.auth.login.LoginRepository
+import com.iverse.core.utils.resources.Resource
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*

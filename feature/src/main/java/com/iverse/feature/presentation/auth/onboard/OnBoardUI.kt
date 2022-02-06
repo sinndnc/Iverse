@@ -7,6 +7,7 @@ import androidx.navigation.NavController
 import com.iverse.feature.component.view.Container
 import com.iverse.feature.navigation.Screens
 
+//TODO EDIT THIS CLASS
 @Composable
 fun OnBoardUI(navController: NavController, viewModel: OnBoardViewModel) {
 
