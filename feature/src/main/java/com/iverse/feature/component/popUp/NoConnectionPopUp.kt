@@ -1,6 +1,5 @@
 package com.iverse.feature.component.popUp
 
-import android.os.CountDownTimer
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideIn
@@ -14,7 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.iverse.core.utils.connectivity.NetworkState
+import com.iverse.feature.R
+import com.iverse.feature.component.text.OverlineText
+import com.iverse.feature.component.theme.CustomSmallShapes
 
 
 @Composable
@@ -31,11 +34,11 @@ fun NoConnectionPopUp(modifier: Modifier = Modifier, isHasInternet: NetworkState
             targetOffset = { IntOffset(0, (it.height / 0.1F).toInt()) })
     ) {
         Box(
-            modifier = Modifier.background(Color.Red)
-                .fillMaxWidth().fillMaxHeight(0.1F).padding(10.dp),
-            contentAlignment = Alignment.TopCenter
+            modifier = Modifier.background(Color.Red, CustomSmallShapes.small)
+                .fillMaxWidth().fillMaxHeight(0.035F),
+            contentAlignment = Alignment.Center
         ) {
-            Text("No internet connection")
+            OverlineText(R.string.no_connection_text, fontSize = 14.sp, textColor = Color.White)
         }
     }
 }

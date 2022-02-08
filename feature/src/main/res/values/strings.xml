@@ -10,4 +10,10 @@
     <string name="password_text">Password</string>
     <string name="login_text">Login</string>
     <string name="forget_password_text">Did you forget your password ?</string>
+    <string name="no_connection_text">No network connection</string>
+    <string name="reconnection_text">Welcome back again</string>
+    <string name="home_text">Home</string>
+    <string name="search_text">Search</string>
+    <string name="notification_text">Notifications</string>
+    <string name="message_text">Messages</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.iverse.feature.component.button
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -10,7 +11,7 @@ import com.iverse.feature.component.theme.CustomSmallShapes
 @Composable
 fun LoginButton(
     modifier: Modifier = Modifier,
-    text: Int,
+    @StringRes text: Int,
     isEnabled: Boolean,
     onClicked: () -> Unit,
 ) {

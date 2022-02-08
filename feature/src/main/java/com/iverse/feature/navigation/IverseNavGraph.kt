@@ -20,9 +20,6 @@ import com.iverse.feature.presentation.home.HomeViewModel
 fun IverseNavGraph() {
 
     val navController = rememberNavController()
-    val configuration = LocalConfiguration.current
-    val screenHeight = configuration.screenHeightDp.dp
-    val screenWidth = configuration.screenWidthDp.dp
 
     NavHost(navController = navController, startDestination = Screens.SplashUI.route) {
         composable(Screens.SplashUI.route) {
@@ -34,7 +31,7 @@ fun IverseNavGraph() {
         }
         composable(Screens.LoginUI.route) {
             val loginViewModel = hiltViewModel<LoginViewModel>()
-            LoginUI(navController = navController, viewModel = loginViewModel, screenHeight, screenWidth)
+            LoginUI(navController = navController, viewModel = loginViewModel)
         }
         composable(Screens.HomeUI.route) {
             val homeViewModel = hiltViewModel<HomeViewModel>()

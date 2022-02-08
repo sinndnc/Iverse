@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import com.iverse.feature.component.popUp.NoConnectionPopUp
 import com.iverse.feature.component.popUp.ReConnectionPopUp
@@ -22,6 +23,7 @@ import com.iverse.core.utils.connectivity.NetworkState
 
 @Composable
 fun Container(
+    modifier: Modifier = Modifier,
     alignment: Alignment = Alignment.Center,
     color: Color = MaterialTheme.colors.background,
     isProcess: Boolean,
@@ -29,7 +31,7 @@ fun Container(
     content: @Composable BoxScope.() -> Unit,
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(color),
         contentAlignment = alignment

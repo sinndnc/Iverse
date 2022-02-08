@@ -10,4 +10,10 @@
     <string name="password_text">Şifre</string>
     <string name="login_text">Giriş yap</string>
     <string name="forget_password_text">"Şifreni mi unuttun "</string>
+    <string name="no_connection_text">Internet bağlantısı yok</string>
+    <string name="reconnection_text">Tekrar hoşgeldin</string>
+    <string name="home_text">Ana Sayfa</string>
+    <string name="search_text">Arama</string>
+    <string name="notification_text">Bildirimler</string>
+    <string name="message_text">Mesajlar</string>
 </resources>

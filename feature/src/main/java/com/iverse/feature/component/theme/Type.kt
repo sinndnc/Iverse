@@ -58,6 +58,7 @@ val OpenSansTypography = Typography(
         fontWeight = FontWeight.Medium,
         fontSize = 12.sp
     ),
+    //OVERLINE
     overline = TextStyle(
         color = Gray.p400,
         fontFamily = OpenSans,
