@@ -6,14 +6,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.iverse.feature.component.view.Container
 import com.iverse.feature.extensions.noRippleClickable
-import com.iverse.feature.presentation.auth.login.views.LoginBodyView
-import com.iverse.feature.presentation.auth.login.views.LoginBottomView
-import com.iverse.feature.presentation.auth.login.views.LoginHeaderView
+import com.iverse.feature.presentation.auth.login.components.LoginBodyView
+import com.iverse.feature.presentation.auth.login.components.LoginBottomView
+import com.iverse.feature.presentation.auth.login.components.LoginHeaderView
 
 
 //TODO EDIT THIS CLASS

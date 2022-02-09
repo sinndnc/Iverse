@@ -1,4 +1,4 @@
-package com.iverse.feature.presentation.auth.login.views
+package com.iverse.feature.presentation.auth.login.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,7 +13,6 @@ import com.iverse.core.domain.model.auth.login.LoginRequestModel
 import com.iverse.feature.R
 import com.iverse.feature.component.button.LoginButton
 import com.iverse.feature.component.textfield.CustomBasicTextField
-import com.iverse.feature.navigation.Screens
 import com.iverse.feature.presentation.auth.login.LoginViewModel
 
 //TODO EDIT THIS CLASS
