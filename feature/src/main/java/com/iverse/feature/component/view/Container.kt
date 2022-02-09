@@ -19,6 +19,7 @@ import com.iverse.feature.component.popUp.ReConnectionPopUp
 import com.iverse.feature.component.theme.CustomSmallShapes
 import com.iverse.feature.component.theme.Gray
 import com.iverse.core.utils.connectivity.NetworkState
+import com.iverse.feature.component.popUp.LoadingPopUp
 
 
 @Composable
@@ -37,19 +38,8 @@ fun Container(
         contentAlignment = alignment
     ) {
         content()
-        NoConnectionPopUp(modifier = Modifier.align(Alignment.BottomCenter), isHasInternet)
-        ReConnectionPopUp(modifier = Modifier.align(Alignment.BottomCenter), isHasInternet)
-        if (isProcess) {
-            Surface(
-                modifier = Modifier.align(Alignment.Center),
-                color = Gray.p800,
-                shape = CustomSmallShapes.large,
-                elevation = 50.dp,
-            ) {
-                CircularProgressIndicator(modifier = Modifier.padding(all = 25.dp), color = Color.White)
-            }
-        }
+        NoConnectionPopUp(isHasInternet)
+        ReConnectionPopUp(isHasInternet)
+        LoadingPopUp(isProcess)
     }
-
-
 }

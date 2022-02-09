@@ -4,11 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/sinan/AndroidStudioProjects/Iverse/feature/src/main/res/drawable/apple_logo.xml" value="0.1285" />
+        <entry key="..\:/Users/sinan/AndroidStudioProjects/Iverse/feature/src/main/res/drawable/chat_fill_logo.xml" value="0.1" />
+        <entry key="..\:/Users/sinan/AndroidStudioProjects/Iverse/feature/src/main/res/drawable/chat_logo.xml" value="0.1" />
+        <entry key="..\:/Users/sinan/AndroidStudioProjects/Iverse/feature/src/main/res/drawable/close.xml" value="0.1" />
         <entry key="..\:/Users/sinan/AndroidStudioProjects/Iverse/feature/src/main/res/drawable/drawable.xml" value="0.141" />
         <entry key="..\:/Users/sinan/AndroidStudioProjects/Iverse/feature/src/main/res/drawable/facebook_logo.xml" value="0.128" />
         <entry key="..\:/Users/sinan/AndroidStudioProjects/Iverse/feature/src/main/res/drawable/gihub_logo.xml" value="0.1285" />
         <entry key="..\:/Users/sinan/AndroidStudioProjects/Iverse/feature/src/main/res/drawable/google_logo.xml" value="0.157" />
+        <entry key="..\:/Users/sinan/AndroidStudioProjects/Iverse/feature/src/main/res/drawable/home_fill_logo.xml" value="0.1" />
         <entry key="..\:/Users/sinan/AndroidStudioProjects/Iverse/feature/src/main/res/drawable/home_logo.xml" value="0.1" />
+        <entry key="..\:/Users/sinan/AndroidStudioProjects/Iverse/feature/src/main/res/drawable/notifications_fill_logo.xml" value="0.1" />
+        <entry key="..\:/Users/sinan/AndroidStudioProjects/Iverse/feature/src/main/res/drawable/notifications_logo.xml" value="0.1" />
+        <entry key="..\:/Users/sinan/AndroidStudioProjects/Iverse/feature/src/main/res/drawable/search_fill_logo.xml" value="0.1" />
+        <entry key="..\:/Users/sinan/AndroidStudioProjects/Iverse/feature/src/main/res/drawable/search_logo.xml" value="0.1" />
         <entry key="..\:/Users/sinan/AndroidStudioProjects/Iverse/feature/src/main/res/font/font.xml" value="0.2361111111111111" />
       </map>
     </option>

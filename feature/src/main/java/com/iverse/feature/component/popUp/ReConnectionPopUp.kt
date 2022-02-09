@@ -3,10 +3,7 @@ package com.iverse.feature.component.popUp
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -22,10 +19,10 @@ import com.iverse.feature.component.theme.CustomSmallShapes
 import com.iverse.feature.component.theme.Green
 
 @Composable
-fun ReConnectionPopUp(modifier: Modifier = Modifier, isHasInternet: NetworkState) {
+fun BoxScope.ReConnectionPopUp(isHasInternet: NetworkState) {
 
     AnimatedVisibility(
-        modifier = modifier,
+        modifier = Modifier.align(Alignment.BottomCenter),
         visible = isHasInternet == NetworkState.RECONNECTED,
         enter = slideIn(
             animationSpec = tween(durationMillis = 500),

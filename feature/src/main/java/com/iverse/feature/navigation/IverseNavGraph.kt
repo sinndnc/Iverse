@@ -1,8 +1,6 @@
 package com.iverse.feature.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -12,8 +10,7 @@ import com.iverse.feature.presentation.auth.login.LoginUI
 import com.iverse.feature.presentation.auth.onboard.OnBoardUI
 import com.iverse.feature.presentation.auth.onboard.OnBoardViewModel
 import com.iverse.feature.presentation.auth.splash.SplashUI
-import com.iverse.feature.presentation.home.HomeUI
-import com.iverse.feature.presentation.home.HomeViewModel
+import com.iverse.feature.presentation.main.MainUI
 
 
 @Composable
@@ -33,9 +30,6 @@ fun IverseNavGraph() {
             val loginViewModel = hiltViewModel<LoginViewModel>()
             LoginUI(navController = navController, viewModel = loginViewModel)
         }
-        composable(Screens.HomeUI.route) {
-            val homeViewModel = hiltViewModel<HomeViewModel>()
-            HomeUI(navController = navController, viewModel = homeViewModel)
-        }
+        composable(Screens.HomeUI.route) { MainUI() }
     }
 }

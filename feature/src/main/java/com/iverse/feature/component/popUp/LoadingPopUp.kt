@@ -6,8 +6,9 @@ import androidx.compose.animation.slideIn
 import androidx.compose.animation.slideOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -18,27 +19,21 @@ import com.iverse.core.utils.connectivity.NetworkState
 import com.iverse.feature.R
 import com.iverse.feature.component.text.OverlineText
 import com.iverse.feature.component.theme.CustomSmallShapes
-
+import com.iverse.feature.component.theme.Gray
 
 @Composable
-fun BoxScope.NoConnectionPopUp( isHasInternet: NetworkState) {
-
+fun BoxScope.LoadingPopUp(isProcess: Boolean) {
     AnimatedVisibility(
         modifier = Modifier.align(Alignment.BottomCenter),
-        visible = isHasInternet == NetworkState.UNCONNECTED,
-        enter = slideIn(
-            animationSpec = tween(durationMillis = 500),
-            initialOffset = { IntOffset(0, (it.height / 0.1F).toInt()) }),
-        exit = slideOut(
-            animationSpec = tween(durationMillis = 500),
-            targetOffset = { IntOffset(0, (it.height / 0.1F).toInt()) })
+        visible = isProcess,
     ) {
-        Box(
-            modifier = Modifier.background(Color.Red, CustomSmallShapes.small)
-                .fillMaxWidth().fillMaxHeight(0.035F),
-            contentAlignment = Alignment.Center
+        Surface(
+            modifier = Modifier.align(Alignment.Center),
+            color = Gray.p800,
+            shape = CustomSmallShapes.large,
+            elevation = 50.dp,
         ) {
-            OverlineText(R.string.no_connection_text, fontSize = 14.sp, textColor = Color.White)
+            CircularProgressIndicator(modifier = Modifier.padding(all = 25.dp), color = Color.White)
         }
     }
 }
