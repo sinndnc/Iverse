@@ -18,9 +18,17 @@ object Dependencies {
     //COMPOSE
     const val compose = "androidx.activity:activity-compose:${Versions.APPCOMPAT_VERSION}"
     const val composeUi = "androidx.compose.ui:ui:${Versions.COMPOSE_VERSION}"
+    const val composeCoil = "io.coil-kt:coil-compose:${Versions.COIL_VERSION}"
+    const val composeUtil = "androidx.compose.ui:ui-util:${Versions.COMPOSE_VERSION}"
     const val composeMaterial = "androidx.compose.material:material:${Versions.COMPOSE_VERSION}"
-    const val composeLivedata =  "androidx.compose.runtime:runtime-livedata:${Versions.COMPOSE_VERSION}"
+    const val composeLivedata = "androidx.compose.runtime:runtime-livedata:${Versions.COMPOSE_VERSION}"
     const val composePreview = "androidx.compose.ui:ui-tooling-preview:${Versions.COMPOSE_VERSION}"
+    const val composeFoundation = "androidx.compose.foundation:foundation:${Versions.COMPOSE_VERSION}"
+
+    //ACCOMPANIST
+    const val composeSystemUiController = "com.google.accompanist:accompanist-systemuicontroller:${Versions.ACCOMPANIST_VERSION}"
+    const val composeInset = "com.google.accompanist:accompanist-insets:${Versions.ACCOMPANIST_VERSION}"
+    const val composeInsetUi = "com.google.accompanist:accompanist-insets-ui:${Versions.ACCOMPANIST_VERSION}"
 
     //NAVIGATION
     const val navigation = "androidx.navigation:navigation-compose:${Versions.NAVIGATION_VERSION}"

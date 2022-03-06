@@ -1,6 +1,9 @@
 package com.iverse.core.data.local.storage
 
 import android.content.Context
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -17,24 +20,24 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = App
 
 class StorageManagerImpl @Inject constructor(@ApplicationContext private val context: Context) : StorageManager() {
 
-    override val dataStore: DataStore<Preferences> get() = context.dataStore
+    override val dataStore: Flow<Preferences> get() = context.dataStore.data
 
     override suspend fun writeStringData(key: Preferences.Key<String>, data: String) =
-        withContext(Dispatchers.IO) { baseWriteFlowResource(context, key, data) }
+        withContext(Dispatchers.IO) { context.baseWriteFlowResource(key, data) }
 
-    override suspend fun readStringData(key: Preferences.Key<String>): String? =
-        withContext(Dispatchers.IO) { baseReadFlowResource(dataStore.data, key) }
+    override fun readStringData(key: Preferences.Key<String>): Flow<String?> =
+        dataStore.baseReadFlowResource(key)
 
     override suspend fun writeIntData(key: Preferences.Key<Int>, data: Int) =
-        withContext(Dispatchers.IO) { baseWriteFlowResource(context, key, data) }
+        withContext(Dispatchers.IO) { context.baseWriteFlowResource(key, data) }
 
-    override suspend fun readIntData(key: Preferences.Key<Int>): Int? =
-        withContext(Dispatchers.IO) { baseReadFlowResource(dataStore.data, key) }
+    override fun readIntData(key: Preferences.Key<Int>): Flow<Int?> =
+        dataStore.baseReadFlowResource( key)
 
     override suspend fun writeBooleanData(key: Preferences.Key<Boolean>, data: Boolean) =
-        withContext(Dispatchers.IO) { baseWriteFlowResource(context, key, data) }
+        withContext(Dispatchers.IO) { context.baseWriteFlowResource(key, data) }
 
-    override suspend fun readBooleanData(key: Preferences.Key<Boolean>): Boolean? =
-        withContext(Dispatchers.IO) { baseReadFlowResource(dataStore.data, key) }
+    override fun readBooleanData(key: Preferences.Key<Boolean>): Flow<Boolean?> =
+        dataStore.baseReadFlowResource( key)
 
 }

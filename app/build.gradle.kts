@@ -63,6 +63,10 @@ dependencies {
     kapt(Dependencies.hiltCompiler)
     //COMPOSE
     implementation(Dependencies.compose)
+    implementation(Dependencies.composeMaterial)
+    implementation(Dependencies.composeInset)
+    implementation(Dependencies.composeInsetUi)
+    implementation(Dependencies.composeSystemUiController)
     //GOOGLE
     implementation(Dependencies.googleServices)
     implementation(Dependencies.googlePhoneServices)

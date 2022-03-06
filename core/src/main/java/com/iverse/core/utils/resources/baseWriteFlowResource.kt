@@ -5,8 +5,8 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import com.iverse.core.data.local.storage.dataStore
 
-suspend fun <T> baseWriteFlowResource(context: Context, key: Preferences.Key<T>, data: T) {
-    context.dataStore.edit { preferences ->
+suspend fun <T> Context.baseWriteFlowResource(key: Preferences.Key<T>, data: T) {
+    dataStore.edit { preferences ->
         preferences[key] = data
     }
 }

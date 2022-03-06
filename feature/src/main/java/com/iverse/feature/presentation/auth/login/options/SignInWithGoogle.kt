@@ -1,6 +1,7 @@
 package com.iverse.feature.presentation.auth.login.options
 
 import android.app.Activity
+import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
@@ -10,7 +11,6 @@ import com.google.android.gms.tasks.Task
 import com.iverse.feature.R
 import com.iverse.feature.component.icon.LoginIconButton
 import com.iverse.feature.presentation.auth.login.LoginViewModel
-import timber.log.Timber
 
 @Composable
 fun SignInWithGoogleButton(viewModel: LoginViewModel) {
@@ -26,10 +26,10 @@ fun SignInWithGoogleButton(viewModel: LoginViewModel) {
                 return@rememberLauncherForActivityResult
             }
             Activity.RESULT_CANCELED -> {
-                Timber.d("GoogleTest", "request is Cancelled")
+                Log.d("GoogleTest", "request is Cancelled")
             }
             Activity.RESULT_FIRST_USER -> {
-                Timber.d("GoogleTest", "request is first user")
+                Log.d("GoogleTest", "request is first user")
 
             }
         }

@@ -2,54 +2,38 @@ package com.iverse.feature.component.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
-
-private val DarkColorPalette = darkColors(
-    primary = Blue.p400,
-    primaryVariant = Blue.p600,
-    secondary = Green.p300,
-    background = Color.Black,
-    error = Red.p500,
-    onBackground = Specified.White,
-    onError = Specified.Black,
-    onPrimary = Specified.Black,
-    onSecondary = Specified.White,
-    onSurface = Specified.White,
-    secondaryVariant = Green.p500,
-    surface = Specified.Black,
-)
-
-private val LightColorPalette = lightColors(
-    primary = Blue.p400,
-    primaryVariant = Blue.p600,
-    secondary = Green.p300,
-    background = Gray.p1100,
-    error = Red.p500,
-    onBackground = Specified.Black,
-    onError = Specified.White,
-    onPrimary = Specified.White,
-    onSecondary = Specified.Black,
-    onSurface = Specified.Black,
-    secondaryVariant = Green.p500,
-    surface = Specified.White
-)
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.iverse.core.utils.theme.AppTheme
+import com.iverse.feature.component.theme.palette.DarkColorPalette
+import com.iverse.feature.component.theme.palette.LightColorPalette
+import com.iverse.feature.component.theme.type.darkTypography
+import com.iverse.feature.component.theme.type.lightTypography
 
 
 @Composable
-fun IverseTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
-    val colors = if (darkTheme) {
-        DarkColorPalette
-    } else {
-        LightColorPalette
+fun IverseTheme(theme: AppTheme, content: @Composable () -> Unit) {
+
+    val isDarkTheme: Boolean = when (theme) {
+        AppTheme.LIGHT -> false
+        AppTheme.DARK -> true
+        AppTheme.DEFAULT -> isSystemInDarkTheme()
     }
+    val colors = if (isDarkTheme) DarkColorPalette else LightColorPalette
+    val types = if (isDarkTheme) darkTypography else lightTypography
 
     MaterialTheme(
         colors = colors,
-        typography = OpenSansTypography,
+        typography = types,
         shapes = CustomMediumShapes,
         content = content
     )
+
+    val systemUiController = rememberSystemUiController()
+    val systemBarColor = if (isDarkTheme) Color.Transparent else Color.Transparent
+    SideEffect {
+        systemUiController.setSystemBarsColor(systemBarColor, darkIcons = !isDarkTheme)
+    }
 }

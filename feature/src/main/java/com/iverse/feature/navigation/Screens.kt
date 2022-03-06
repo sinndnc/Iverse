@@ -1,9 +1,11 @@
 package com.iverse.feature.navigation
 
 sealed class Screens(val route: String) {
-    object OnBoardUI : Screens("onboard")
     object SplashUI : Screens("splash")
-    object LoginUI : Screens("login")
+    object OnBoardUI : Screens("onboard")
     object RegisterUI : Screens("register")
-    object HomeUI : Screens("home")
+    object LoginUI : Screens("login")
+    object MainUI : Screens("main")
+    object ChatUI : Screens("chat")
+
 }

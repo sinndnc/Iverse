@@ -50,15 +50,19 @@ kapt {
 }
 
 dependencies {
-    implementation("com.jakewharton.timber:timber:5.0.1")
     //MODULE
     implementation(project(mapOf("path" to ":core")))
     //COMPOSE
     implementation(Dependencies.composeUi)
     implementation(Dependencies.composeMaterial)
     implementation(Dependencies.composePreview)
+    implementation(Dependencies.composeUtil)
     implementation(Dependencies.compose)
     implementation(Dependencies.composeLivedata)
+    implementation(Dependencies.composeCoil)
+    implementation(Dependencies.composeInset)
+    implementation(Dependencies.composeInsetUi)
+    implementation(Dependencies.composeSystemUiController)
     //DATASTORE
     implementation(Dependencies.dataStore)
     //NAVIGATION

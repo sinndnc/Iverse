@@ -4,6 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Chat(
-    val _id: String,
+    val _id: Id,
     val messages: List<Message>
 )
