@@ -22,8 +22,8 @@ android {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
@@ -45,6 +45,10 @@ kapt {
 }
 
 dependencies {
+    //SOCKET
+    implementation("io.socket:socket.io-client:2.0.0") {
+        exclude(group = "org.json", module = "json")
+    }
     //CORE
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)

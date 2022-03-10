@@ -24,7 +24,6 @@ import com.iverse.feature.component.theme.Gray
 @Composable
 fun BoxScope.LoadingPopUp(isProcess: Boolean) {
     AnimatedVisibility(
-        modifier = Modifier.align(Alignment.BottomCenter),
         visible = isProcess,
     ) {
         Surface(

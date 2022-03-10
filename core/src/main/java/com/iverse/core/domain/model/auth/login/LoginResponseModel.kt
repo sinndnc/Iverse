@@ -7,7 +7,6 @@ import kotlinx.serialization.Serializable
 data class LoginResponseModel(
     val __v: Int,
     val _id: String,
-    val chats: List<Chat>,
     val email: String,
     val friends: List<String>,
     val isAdmin: Boolean,
@@ -16,7 +15,7 @@ data class LoginResponseModel(
     val name: String,
     val password: String,
     val photo: String,
-    val platforms: List<String>,
+    val platforms: List<String?>?,
     val region: String,
     val sex: String,
     val surname: String,

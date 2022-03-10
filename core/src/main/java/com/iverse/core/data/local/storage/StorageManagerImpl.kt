@@ -13,6 +13,7 @@ import com.iverse.core.utils.resources.baseWriteFlowResource
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -25,19 +26,19 @@ class StorageManagerImpl @Inject constructor(@ApplicationContext private val con
     override suspend fun writeStringData(key: Preferences.Key<String>, data: String) =
         withContext(Dispatchers.IO) { context.baseWriteFlowResource(key, data) }
 
-    override fun readStringData(key: Preferences.Key<String>): Flow<String?> =
+    override fun readStringData(key: Preferences.Key<String>): Flow<String> =
         dataStore.baseReadFlowResource(key)
 
     override suspend fun writeIntData(key: Preferences.Key<Int>, data: Int) =
         withContext(Dispatchers.IO) { context.baseWriteFlowResource(key, data) }
 
     override fun readIntData(key: Preferences.Key<Int>): Flow<Int?> =
-        dataStore.baseReadFlowResource( key)
+        dataStore.baseReadFlowResource(key)
 
     override suspend fun writeBooleanData(key: Preferences.Key<Boolean>, data: Boolean) =
         withContext(Dispatchers.IO) { context.baseWriteFlowResource(key, data) }
 
     override fun readBooleanData(key: Preferences.Key<Boolean>): Flow<Boolean?> =
-        dataStore.baseReadFlowResource( key)
+        dataStore.baseReadFlowResource(key)
 
 }

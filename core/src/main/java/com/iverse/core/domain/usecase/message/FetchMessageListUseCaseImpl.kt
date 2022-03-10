@@ -1,13 +1,12 @@
 package com.iverse.core.domain.usecase.message
 
-import com.iverse.core.domain.model.auth.login.Chat
 import com.iverse.core.domain.model.auth.login.Message
 import com.iverse.core.domain.model.message.MessageRequestModel
-import com.iverse.core.domain.model.shuffle.ShuffleRequestModel
 import com.iverse.core.domain.repository.message.MessageRepository
 import com.iverse.core.utils.resources.Status
+import javax.inject.Inject
 
-class FetchMessageListUseCaseImpl(
+class FetchMessageListUseCaseImpl @Inject constructor(
     private val messageRepository: MessageRepository
 ) : FetchMessageListUseCase {
 

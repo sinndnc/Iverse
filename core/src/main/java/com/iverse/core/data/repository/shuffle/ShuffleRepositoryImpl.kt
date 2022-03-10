@@ -11,9 +11,10 @@ import io.ktor.client.statement.*
 import io.ktor.http.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 
-class ShuffleRepositoryImpl(private val client: HttpClient) : ShuffleRepository {
+class ShuffleRepositoryImpl @Inject constructor(private val client: HttpClient) : ShuffleRepository {
 
     override suspend fun fetchUserShuffleList(id: ShuffleRequestModel): Resource<List<Chat>> =
         withContext(Dispatchers.IO) {

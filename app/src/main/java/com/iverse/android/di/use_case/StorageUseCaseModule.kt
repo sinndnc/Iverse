@@ -5,6 +5,7 @@ import com.iverse.core.data.local.storage.StorageManager
 import com.iverse.core.data.local.storage.StorageManagerImpl
 import com.iverse.core.domain.usecase.storage.SetUserInformationUseCase
 import com.iverse.core.domain.usecase.storage.SetUserInformationUseCaseImpl
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,11 +16,12 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object StorageUseCaseModule {
+abstract class StorageUseCaseModule {
 
-    @Provides
+    @Binds
     @Singleton
-    fun provideSetUserInformationUseCase(storageManager: StorageManager):
-            SetUserInformationUseCase = SetUserInformationUseCaseImpl(storageManager)
+    abstract fun provideSetUserInformationUseCase(
+        setUserInformationUseCaseImpl: SetUserInformationUseCaseImpl
+    ): SetUserInformationUseCase
 
 }

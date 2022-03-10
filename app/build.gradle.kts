@@ -30,6 +30,11 @@ android {
                 "proguard-rules.pro"
             )
         }
+        debug {
+            isDebuggable = true
+            isTestCoverageEnabled = true
+
+        }
     }
     buildFeatures {
         compose = true
@@ -55,6 +60,10 @@ kapt {
 }
 
 dependencies {
+    //SOCKET
+    implementation("io.socket:socket.io-client:2.0.0") {
+        exclude(group = "org.json", module = "json")
+    }
     //MODULES
     implementation(project(Modules.core))
     implementation(project(Modules.feature))

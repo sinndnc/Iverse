@@ -13,6 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.iverse.feature.presentation.main.pages.message.chat.component.ChatAppBar
+import com.iverse.feature.presentation.main.pages.message.chat.component.ChatBottomBar
+import com.iverse.feature.presentation.main.pages.message.chat.component.ChatList
 import com.iverse.feature.presentation.main.pages.message.chat.component.MessageBubble
 
 
@@ -20,35 +22,12 @@ import com.iverse.feature.presentation.main.pages.message.chat.component.Message
 fun ChatUI(navController: NavController, viewModel: ChatViewModel, image: String, name: String) {
 
     val listState = rememberLazyListState()
-    val messageList = viewModel.messageList.toList()
-
+    val messageList = viewModel.messageList.reversed()
 
     Column {
         ChatAppBar(image = image, name = name) { navController.navigateUp() }
-        LazyColumn(
-            modifier = Modifier
-                .weight(1F),
-            state = listState,
-            verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            itemsIndexed(items = messageList) { index, item ->
-                if (index == 0) {
-                    Text("Today", style = MaterialTheme.typography.overline, modifier = Modifier.padding(bottom = 10.dp))
-                }
-                MessageBubble(
-                    message = item.message,
-                    messageDate = item.date,
-                    isMyMessage = item.isMy,
-                )
-            }
-        }
-        OutlinedTextField(
-            value = "", onValueChange = {}, modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp)
-                .imePadding()
-        )
+        ChatList(listState = listState, messageList = messageList)
+        ChatBottomBar(viewModel = viewModel)
     }
 
 

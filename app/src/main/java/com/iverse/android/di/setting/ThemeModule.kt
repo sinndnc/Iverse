@@ -14,7 +14,5 @@ abstract class ThemeModule {
 
     @Binds
     @Singleton
-    abstract fun bindThemeSetting(
-        themeSettingPreference: ThemeSettingImpl
-    ): ThemeSetting
+    abstract fun bindThemeSetting(themeSettingPreference: ThemeSettingImpl): ThemeSetting
 }

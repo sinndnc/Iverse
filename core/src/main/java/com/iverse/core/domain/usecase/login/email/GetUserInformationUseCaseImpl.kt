@@ -18,11 +18,15 @@ class GetUserInformationUseCaseImpl @Inject constructor(
         val result = loginRepository.loginToAccount(model)
         return when (result.status) {
             Status.SUCCESS -> {
-                setUserInformationUseCase.invoke(result.data)
+                setUserInformationUseCase.setData(result.data!!)
                 Resource.success(result.data)
             }
-            Status.LOADING -> {Resource.loading()}
-            else -> {Resource.error(result.message.toString())}
+            Status.LOADING -> {
+                Resource.loading()
+            }
+            else -> {
+                Resource.error(result.message.toString())
+            }
         }
     }
 }

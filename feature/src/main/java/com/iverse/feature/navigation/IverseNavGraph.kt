@@ -1,6 +1,5 @@
 package com.iverse.feature.navigation
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.systemBarsPadding
@@ -8,6 +7,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -18,6 +18,7 @@ import com.iverse.feature.presentation.auth.login.LoginViewModel
 import com.iverse.feature.presentation.auth.onboard.OnBoardUI
 import com.iverse.feature.presentation.auth.onboard.OnBoardViewModel
 import com.iverse.feature.presentation.auth.splash.SplashUI
+import com.iverse.feature.presentation.auth.splash.SplashViewModel
 import com.iverse.feature.presentation.main.MainUI
 import com.iverse.feature.presentation.main.pages.message.chat.ChatUI
 import com.iverse.feature.presentation.main.pages.message.chat.ChatViewModel
@@ -37,7 +38,8 @@ fun IverseNavGraph() {
         startDestination = Screens.SplashUI.route
     ) {
         composable(Screens.SplashUI.route) {
-            SplashUI(navController = navController)
+            val splashViewModel = hiltViewModel<SplashViewModel>()
+            SplashUI(navController = navController,viewModel = splashViewModel)
         }
         composable(Screens.OnBoardUI.route) {
             val onBoardViewModel = hiltViewModel<OnBoardViewModel>()
@@ -60,7 +62,6 @@ fun IverseNavGraph() {
             val chatViewModel = hiltViewModel<ChatViewModel>()
             val image = backStackEntry.arguments?.getString("userImage")
             val name = backStackEntry.arguments?.getString("userName")
-            Log.d("ArgumentTest", image.toString())
             ChatUI(navController = navController, viewModel = chatViewModel, image = image!!,name = name!!)
         }
     }

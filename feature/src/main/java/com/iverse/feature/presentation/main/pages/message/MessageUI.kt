@@ -13,11 +13,10 @@ import com.iverse.feature.presentation.main.pages.message.component.MessageHeade
 fun MessageUI(
     viewModel: MessageViewModel,
     mainViewModel: MainViewModel,
-    mainNavController: NavController,
+    navController: NavController,
 ) {
 
     val scrollState = rememberScrollState(0)
-    val systemUiController = rememberSystemUiController()
 
     Column {
         MessageHeaderView(viewModel = viewModel, scrollState = scrollState)
@@ -25,7 +24,7 @@ fun MessageUI(
             viewModel = viewModel,
             scrollState = scrollState,
             mainViewModel = mainViewModel,
-            mainNavController = mainNavController
+            navController = navController
         )
     }
 }

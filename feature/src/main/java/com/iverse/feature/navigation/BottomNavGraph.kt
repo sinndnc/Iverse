@@ -37,7 +37,7 @@ fun ColumnScope.BottomNavGraph(navController: NavHostController, mainNavControll
             }
             composable(route = BottomPages.MESSAGES.route) {
                 val messageViewModel = hiltViewModel<MessageViewModel>()
-                MessageUI(viewModel = messageViewModel, mainViewModel = mainViewModel, mainNavController = mainNavController)
+                MessageUI(viewModel = messageViewModel, mainViewModel = mainViewModel, navController = mainNavController)
             }
         }
     }

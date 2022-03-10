@@ -1,11 +1,5 @@
 package com.iverse.android.di.network
 
-import com.iverse.core.domain.repository.auth.login.LoginRepository
-import com.iverse.core.data.repository.auth.login.LoginRepositoryImpl
-import com.iverse.core.data.repository.shuffle.ShuffleRepositoryImpl
-import com.iverse.core.domain.repository.message.MessageRepository
-import com.iverse.core.domain.repository.message.MessageRepositoryImpl
-import com.iverse.core.domain.repository.shuffle.ShuffleRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,19 +24,4 @@ object ClientModule {
 
         }
     }
-
-    @Provides
-    @Singleton
-    fun provideLoginRepository(client: HttpClient): LoginRepository =
-        LoginRepositoryImpl(client = client)
-
-    @Provides
-    @Singleton
-    fun provideShuffleRepository(client: HttpClient): ShuffleRepository = ShuffleRepositoryImpl(client = client)
-
-    @Provides
-    @Singleton
-    fun provideMessageRepository(client: HttpClient): MessageRepository = MessageRepositoryImpl(client = client)
-
-
 }

@@ -7,7 +7,7 @@ import com.iverse.core.utils.connectivity.NetworkManager
 import com.iverse.core.utils.connectivity.NetworkState
 import javax.inject.Inject
 
-class CheckNetworkUseCaseImpl (
+class CheckNetworkUseCaseImpl @Inject constructor(
     networkManager: NetworkManager
 ) : CheckNetworkUseCase {
 

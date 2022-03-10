@@ -13,7 +13,7 @@ abstract class StorageManager {
 
     //String
     abstract suspend fun writeStringData(key: Preferences.Key<String>, data: String)
-    abstract fun readStringData(key: Preferences.Key<String>): Flow<String?>
+    abstract fun readStringData(key: Preferences.Key<String>): Flow<String>
 
     //Int
     abstract suspend fun writeIntData(key: Preferences.Key<Int>, data: Int)

@@ -8,6 +8,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.iverse.android.R
+import com.iverse.core.utils.qualifiers.GoogleWebServerId
 import com.iverse.core.utils.qualifiers.SignIn
 import com.iverse.core.utils.qualifiers.SignUp
 import dagger.Module
@@ -43,6 +44,7 @@ object GoogleModule {
 
     @Provides
     @Singleton
+    @GoogleWebServerId
     fun provideServerWebId(@ApplicationContext context: Context): String =
         context.getString(R.string.google_api_web_token)
 
@@ -50,7 +52,7 @@ object GoogleModule {
     @SignUp
     @Provides
     @Singleton
-    fun provideSignUpRequest(clientId: String): BeginSignInRequest = BeginSignInRequest.builder()
+    fun provideSignUpRequest(@GoogleWebServerId clientId: String): BeginSignInRequest = BeginSignInRequest.builder()
         .setGoogleIdTokenRequestOptions(
             BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
                 .setSupported(true)

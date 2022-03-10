@@ -11,9 +11,10 @@ import io.ktor.client.statement.*
 import io.ktor.http.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 
-class LoginRepositoryImpl(private val client: HttpClient) : LoginRepository {
+class LoginRepositoryImpl @Inject constructor(private val client: HttpClient) : LoginRepository {
 
     override suspend fun loginToAccount(model: LoginRequestModel?): Resource<LoginResponseModel?> {
         return withContext(Dispatchers.IO) {

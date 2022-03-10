@@ -7,6 +7,6 @@ import com.iverse.core.utils.resources.Resource
 
 interface GetUserInformationUseCase {
 
-    suspend operator fun invoke(model: LoginRequestModel?): Resource<LoginResponseModel?>
+    suspend  fun invoke(model: LoginRequestModel?): Resource<LoginResponseModel?>
 
 }

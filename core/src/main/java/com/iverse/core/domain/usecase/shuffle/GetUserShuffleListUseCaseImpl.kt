@@ -9,9 +9,10 @@ import com.iverse.core.utils.resources.Status
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 
-class GetUserShuffleListUseCaseImpl(
+class GetUserShuffleListUseCaseImpl @Inject constructor(
     private val shuffleRepository: ShuffleRepository,
     private val storageManager: StorageManager,
 ) : GetUserShuffleListUseCase {

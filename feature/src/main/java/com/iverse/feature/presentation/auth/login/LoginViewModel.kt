@@ -26,7 +26,6 @@ class LoginViewModel @Inject constructor(
     override val isLoading: MutableState<Boolean> = mutableStateOf(false)
     override val isPopUp: MutableState<Boolean> = mutableStateOf(false)
 
-
     //TODO ADD STORAGE MANAGER FOR SAVE TOKEN AND etc.
     fun signInWithEmail(loginRequestModel: LoginRequestModel, navController: NavController) {
         isLoading.value = true

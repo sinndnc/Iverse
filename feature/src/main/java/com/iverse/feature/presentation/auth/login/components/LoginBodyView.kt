@@ -52,7 +52,7 @@ fun LoginBodyView(
         ) { isVisible = !isVisible }
         //********** LOGIN ***********
         LoginButton(text = R.string.login_text, isEnabled = isProcess) {
-            viewModel.signInWithEmail(LoginRequestModel("sinandinc333@gmail.com", "Snn20012004"), navController)
+            viewModel.signInWithEmail(LoginRequestModel(emailValue.value, passwordValue.value), navController)
         }
     }
 }

@@ -7,6 +7,7 @@ import com.iverse.core.domain.usecase.message.FetchMessageListUseCase
 import com.iverse.core.domain.usecase.message.FetchMessageListUseCaseImpl
 import com.iverse.core.domain.usecase.shuffle.GetUserShuffleListUseCase
 import com.iverse.core.domain.usecase.shuffle.GetUserShuffleListUseCaseImpl
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,20 +17,19 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object MessageUseCaseModule {
+abstract class MessageUseCaseModule {
 
-    @Provides
+    @Binds
     @Singleton
-    fun provideGetUserShuffleListUseCase(
-        shuffleRepository: ShuffleRepository,
-        storageManager: StorageManager
-    ): GetUserShuffleListUseCase = GetUserShuffleListUseCaseImpl(shuffleRepository, storageManager)
+    abstract fun provideGetUserShuffleListUseCase(
+        getUserShuffleListUseCaseImpl: GetUserShuffleListUseCaseImpl
+    ): GetUserShuffleListUseCase
 
-    @Provides
+    @Binds
     @Singleton
-    fun provideGetUserMessageListUseCase(
-        messageRepository: MessageRepository
-    ): FetchMessageListUseCase = FetchMessageListUseCaseImpl(messageRepository)
+    abstract fun provideGetUserMessageListUseCase(
+        fetchMessageListUseCaseImpl: FetchMessageListUseCaseImpl
+    ): FetchMessageListUseCase
 
 
 }
