@@ -74,6 +74,10 @@ dependencies {
     //GOOGLE
     implementation(Dependencies.googleServices)
     implementation(Dependencies.googlePhoneServices)
+    //FIREBASE
+    implementation(platform(Dependencies.firebaseBom))
+    implementation(Dependencies.firebaseFirestore)
+    implementation(Dependencies.firebaseAuth)
     //CORE
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)

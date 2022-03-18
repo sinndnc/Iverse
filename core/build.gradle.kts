@@ -27,6 +27,14 @@ android {
             )
         }
     }
+
+    testOptions {
+        execution = "ANDROIDX_TEST_ORCHESTRATOR"
+
+        unitTests.all {
+            it.useJUnitPlatform()
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -45,10 +53,6 @@ kapt {
 }
 
 dependencies {
-    //SOCKET
-    implementation("io.socket:socket.io-client:2.0.0") {
-        exclude(group = "org.json", module = "json")
-    }
     //CORE
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
@@ -56,10 +60,15 @@ dependencies {
     //HILT
     implementation(Dependencies.hiltAndroid)
     kapt(Dependencies.hiltCompiler)
+    //FIREBASE
+    implementation(platform(Dependencies.firebaseBom))
+    implementation(Dependencies.firebaseFirestore)
+    implementation(Dependencies.firebaseAuth)
     //COMPOSE
     implementation(Dependencies.composeUi)
     implementation(Dependencies.composeMaterial)
     implementation(Dependencies.composePreview)
+    implementation(Dependencies.hiltNavigation)
     implementation(Dependencies.compose)
     //STORAGE
     implementation(Dependencies.dataStore)
@@ -70,7 +79,11 @@ dependencies {
     implementation(Dependencies.ktorSerialization)
     implementation(Dependencies.jetBrainSerialization)
     //TEST
+    kaptTest(TestDependencies.hilt)
+    kaptAndroidTest(TestDependencies.hilt)
     testImplementation(TestDependencies.junit)
+    testImplementation(TestDependencies.instrumentedHilt)
+    androidTestImplementation(TestDependencies.instrumentedHilt)
     androidTestImplementation(AndroidTestDependencies.junit)
     androidTestImplementation(AndroidTestDependencies.espresso)
 }

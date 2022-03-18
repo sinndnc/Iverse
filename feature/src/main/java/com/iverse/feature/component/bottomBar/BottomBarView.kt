@@ -12,17 +12,17 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import com.iverse.core.utils.navigation.Screens
 import com.iverse.feature.component.icon.CustomIcon
-import com.iverse.feature.component.theme.CustomSmallShapes
-import com.iverse.feature.component.theme.Gray
-import com.iverse.feature.navigation.BottomPages
+import com.iverse.feature.navigation.content.BottomPages
+import com.iverse.feature.presentation.main.MainViewModel
 
 
 //TODO EDIT THIS CLASS
 @Composable
 fun ColumnScope.BottomBarView(
     currentDestination: NavDestination?,
-    navController: NavController,
+    viewModel: MainViewModel,
 ) {
 
     val screens = listOf(BottomPages.HOME, BottomPages.SEARCH, BottomPages.NOTIFICATIONS, BottomPages.MESSAGES)
@@ -42,13 +42,7 @@ fun ColumnScope.BottomBarView(
                 icon = screen.icon,
                 isSelected = isSelected
             ) {
-                navController.navigate(screen.route) {
-                    popUpTo(navController.graph.findStartDestination().id) {
-                        saveState = true
-                    }
-                    launchSingleTop = true
-                    restoreState = true
-                }
+                viewModel.navigateTo(screen.route)
             }
         }
     }

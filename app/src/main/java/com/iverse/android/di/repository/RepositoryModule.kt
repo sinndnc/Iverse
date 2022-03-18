@@ -1,11 +1,11 @@
 package com.iverse.android.di.repository
 
-import com.iverse.core.data.repository.auth.login.LoginRepositoryImpl
-import com.iverse.core.data.repository.shuffle.ShuffleRepositoryImpl
-import com.iverse.core.domain.repository.auth.login.LoginRepository
-import com.iverse.core.domain.repository.message.MessageRepository
-import com.iverse.core.domain.repository.message.MessageRepositoryImpl
-import com.iverse.core.domain.repository.shuffle.ShuffleRepository
+import com.iverse.core.data.repository.user.UserRepositoryImpl
+import com.iverse.core.data.repository.chat.ChatRepositoryImpl
+import com.iverse.core.data.repository.chatRoom.ChatRoomRepositoryImpl
+import com.iverse.core.domain.repository.user.UserRepository
+import com.iverse.core.domain.repository.chat.ChatRepository
+import com.iverse.core.domain.repository.chatRoom.ChatRoomRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -16,16 +16,25 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
 
-    @Binds
-    @Singleton
-    abstract fun provideLoginRepository(loginRepositoryImpl: LoginRepositoryImpl): LoginRepository
 
     @Binds
     @Singleton
-    abstract fun provideShuffleRepository(shuffleRepositoryImpl: ShuffleRepositoryImpl): ShuffleRepository
+    abstract fun bindUserRepository(userRepositoryImpl: UserRepositoryImpl) : UserRepository
 
     @Binds
     @Singleton
-    abstract fun provideMessageRepository(messageRepositoryImpl: MessageRepositoryImpl): MessageRepository
+    abstract fun bindChatRepository(chatRepositoryImpl: ChatRepositoryImpl): ChatRepository
+
+
+    @Binds
+    @Singleton
+    abstract fun bindChatRoomRepository(chatRoomRepositoryImpl: ChatRoomRepositoryImpl): ChatRoomRepository
+
+    /*
+    @Binds
+    @Singleton
+    abstract fun bindMessageRepository(messageRepositoryImpl: MessageRepositoryImpl): MessageRepository
+     */
+
 
 }

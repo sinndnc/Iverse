@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "496864884033",
+    "project_id": "main-tokenizer-339209",
+    "storage_bucket": "main-tokenizer-339209.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496864884033:android:c2a39f32b6df969cc51dc0",
+        "android_client_info": {
+          "package_name": "com.iverse.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "496864884033-snsu4jbea9lqmeeftdljtnh0p1rpncfp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiOdCWSkqI2CzCAplKhOAaH1D5pHOIQ1o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "496864884033-snsu4jbea9lqmeeftdljtnh0p1rpncfp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

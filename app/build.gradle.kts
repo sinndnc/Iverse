@@ -4,6 +4,7 @@ plugins {
     kotlin(IdPlugin.kapt)
     id(IdPlugin.application)
     id(IdPlugin.serialization)
+    id(IdPlugin.firebase)
 }
 
 android {
@@ -16,7 +17,7 @@ android {
         versionCode = Config.versionCode
         versionName = Config.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.iverse.android.CustomTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -60,10 +61,6 @@ kapt {
 }
 
 dependencies {
-    //SOCKET
-    implementation("io.socket:socket.io-client:2.0.0") {
-        exclude(group = "org.json", module = "json")
-    }
     //MODULES
     implementation(project(Modules.core))
     implementation(project(Modules.feature))
@@ -79,6 +76,11 @@ dependencies {
     //GOOGLE
     implementation(Dependencies.googleServices)
     implementation(Dependencies.googlePhoneServices)
+    //FIREBASE
+    implementation(platform(Dependencies.firebaseBom))
+    implementation(Dependencies.firebaseFirestore)
+    implementation(Dependencies.firebaseAnalytics)
+    implementation(Dependencies.firebaseAuth)
     //CORE
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)

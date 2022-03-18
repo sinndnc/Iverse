@@ -2,21 +2,42 @@ package com.iverse.feature.presentation.auth.splash
 
 
 import androidx.lifecycle.ViewModel
-import com.iverse.core.constant.AuthPreferencesKeys
-import com.iverse.core.data.local.storage.StorageManager
+import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseAuth
+import com.iverse.core.utils.navigation.NavigationDispatcher
+import com.iverse.core.utils.navigation.Screens
+import com.iverse.core.utils.qualifiers.DefaultDispatcher
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-    private val storageManager: StorageManager
+    @DefaultDispatcher private val dispatcher: CoroutineDispatcher,
+    private val navigationDispatcher: NavigationDispatcher,
+    val firebaseAuth: FirebaseAuth,
 ) : ViewModel() {
 
-    val isToken: Flow<String> = runBlocking(Dispatchers.IO) { storageManager.readStringData(AuthPreferencesKeys.TOKEN) }
+    fun redirectToMain() {
+        viewModelScope.launch(dispatcher){
+            navigationDispatcher.dispatchNavigationCommand { navController ->
+                navController.popBackStack()
+                navController.navigate(Screens.MainUI.route)
+            }
+        }
+    }
 
+    //TODO
+    fun redirectToOnBoard(){
+        viewModelScope.launch(dispatcher){
+            navigationDispatcher.dispatchNavigationCommand { navController ->
+                navController.popBackStack()
+                navController.navigate(Screens.LoginUI.route)
+            }
+        }
+    }
 
 }
+

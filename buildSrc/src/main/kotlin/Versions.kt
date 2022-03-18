@@ -11,6 +11,8 @@ object Versions {
     //GOOGLE
     const val GOOGLE_SERVICES = "20.0.1"
     const val GOOGLE_PHONE_SERVICES = "18.0.1"
+    //FIREBASE
+    const val FIREBASE_VERSION = "4.3.10"
     //STORAGE
     const val DATASTORE_VERSION = "1.0.0"
     const val ENCRYPTED_VERSION = "1.0.0"

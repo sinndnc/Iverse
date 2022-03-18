@@ -17,10 +17,7 @@ import com.iverse.feature.presentation.auth.login.components.LoginHeaderView
 
 //TODO EDIT THIS CLASS
 @Composable
-fun LoginUI(
-    navController: NavController,
-    viewModel: LoginViewModel,
-) {
+fun LoginUI(viewModel: LoginViewModel) {
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
     val screenWidth = configuration.screenWidthDp.dp
@@ -36,7 +33,7 @@ fun LoginUI(
             verticalArrangement = Arrangement.Center,
         ) {
             LoginHeaderView(modifier = Modifier.weight(1.2F, true), focusManager)
-            LoginBodyView(modifier = Modifier.weight(2F, true), viewModel, navController)
+            LoginBodyView(modifier = Modifier.weight(2F, true), viewModel)
             LoginBottomView(Modifier.fillMaxSize().weight(2F, true), viewModel)
         }
     }

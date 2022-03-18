@@ -6,13 +6,11 @@ import androidx.compose.animation.slideIn
 import androidx.compose.animation.slideOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.iverse.core.utils.connectivity.NetworkState
 import com.iverse.feature.R
@@ -21,11 +19,11 @@ import com.iverse.feature.component.theme.CustomSmallShapes
 
 
 @Composable
-fun BoxScope.NoConnectionPopUp( isHasInternet: NetworkState) {
+fun BoxScope.NoConnectionPopUp(HasInternet: NetworkState) {
 
     AnimatedVisibility(
         modifier = Modifier.align(Alignment.BottomCenter),
-        visible = isHasInternet == NetworkState.UNCONNECTED,
+        visible = HasInternet == NetworkState.UNCONNECTED,
         enter = slideIn(
             animationSpec = tween(durationMillis = 500),
             initialOffset = { IntOffset(0, (it.height / 0.1F).toInt()) }),

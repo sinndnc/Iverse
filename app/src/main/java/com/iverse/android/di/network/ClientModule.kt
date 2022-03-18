@@ -1,5 +1,6 @@
 package com.iverse.android.di.network
 
+import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

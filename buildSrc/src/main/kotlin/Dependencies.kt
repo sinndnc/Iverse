@@ -9,6 +9,13 @@ object Dependencies {
     const val googleServices = "com.google.android.gms:play-services-auth:${Versions.GOOGLE_SERVICES}"
     const val googlePhoneServices = "com.google.android.gms:play-services-auth-api-phone:${Versions.GOOGLE_PHONE_SERVICES}"
 
+    //FIREBASE
+    const val firebaseBom = "com.google.firebase:firebase-bom:29.2.0"
+    const val firebaseAnalytics = "com.google.firebase:firebase-analytics-ktx"
+    const val firebaseAuth = "com.google.firebase:firebase-auth-ktx"
+    const val firebaseFirestore = "com.google.firebase:firebase-firestore-ktx"
+
+
     //STORAGE
     const val dataStore = "androidx.datastore:datastore-preferences:${Versions.DATASTORE_VERSION}"
 

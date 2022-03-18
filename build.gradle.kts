@@ -4,10 +4,11 @@ buildscript {
         mavenCentral()
     }
     dependencies {
+        classpath(BuildPlugin.firebasePlugin)
         classpath(BuildPlugin.androidPlugin)
         classpath(BuildPlugin.kotlinPlugin)
         classpath(BuildPlugin.hiltPlugin)
-        classpath(BuildPlugin.SerializationPlugin)
+        classpath(BuildPlugin.serializationPlugin)
     }
 }
 

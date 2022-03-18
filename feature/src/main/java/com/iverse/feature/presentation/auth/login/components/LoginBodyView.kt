@@ -9,7 +9,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.navigation.NavController
-import com.iverse.core.domain.model.auth.login.LoginRequestModel
 import com.iverse.feature.R
 import com.iverse.feature.component.button.LoginButton
 import com.iverse.feature.component.textfield.CustomBasicTextField
@@ -20,7 +19,6 @@ import com.iverse.feature.presentation.auth.login.LoginViewModel
 fun LoginBodyView(
     modifier: Modifier = Modifier,
     viewModel: LoginViewModel,
-    navController: NavController,
 ) {
     val emailValue: MutableState<String> = remember { mutableStateOf("") }
     val passwordValue: MutableState<String> = remember { mutableStateOf("") }
@@ -52,7 +50,7 @@ fun LoginBodyView(
         ) { isVisible = !isVisible }
         //********** LOGIN ***********
         LoginButton(text = R.string.login_text, isEnabled = isProcess) {
-            viewModel.signInWithEmail(LoginRequestModel(emailValue.value, passwordValue.value), navController)
+            viewModel.loginToAccountWithEmailAndPassword(emailValue.value, passwordValue.value)
         }
     }
 }
