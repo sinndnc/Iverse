@@ -7,7 +7,7 @@ import com.iverse.core.base.BaseViewModel
 import com.iverse.core.domain.usecase.network.CheckNetworkUseCase
 import com.iverse.core.utils.connectivity.NetworkState
 import com.iverse.core.utils.navigation.NavigationDispatcher
-import com.iverse.core.utils.navigation.Screens
+import com.iverse.feature.navigation.Screens
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

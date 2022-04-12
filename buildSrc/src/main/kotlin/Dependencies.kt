@@ -14,7 +14,7 @@ object Dependencies {
     const val firebaseAnalytics = "com.google.firebase:firebase-analytics-ktx"
     const val firebaseAuth = "com.google.firebase:firebase-auth-ktx"
     const val firebaseFirestore = "com.google.firebase:firebase-firestore-ktx"
-
+    const val firebaseMessaging = "com.google.firebase:firebase-messaging-ktx"
 
     //STORAGE
     const val dataStore = "androidx.datastore:datastore-preferences:${Versions.DATASTORE_VERSION}"

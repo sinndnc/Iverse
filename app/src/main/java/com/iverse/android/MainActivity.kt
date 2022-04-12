@@ -1,13 +1,18 @@
 package com.iverse.android
 
+import android.app.NotificationChannel
+import android.app.NotificationChannelGroup
+import android.app.NotificationManager
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.collectAsState
 import androidx.core.view.WindowCompat
 import com.google.accompanist.insets.ProvideWindowInsets
-import com.iverse.core.utils.navigation.BottomNavigationDispatcher
+import com.iverse.core.constant.NotificationConstant
 import com.iverse.core.utils.navigation.NavigationDispatcher
+import com.iverse.core.utils.notification.NotificationHelper
 import com.iverse.core.utils.theme.ThemeSetting
 import com.iverse.feature.component.theme.IverseTheme
 import com.iverse.feature.navigation.graph.IverseNavGraph
@@ -24,18 +29,18 @@ class MainActivity : ComponentActivity() {
     lateinit var navigationDispatcher: NavigationDispatcher
 
     @Inject
-    lateinit var bottomNavigationDispatcher: BottomNavigationDispatcher
+    lateinit var notificationHelper: NotificationHelper
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        init()
         setContent {
             val theme = themeSetting.themeStream.collectAsState()
             IverseTheme(theme.value) {
                 ProvideWindowInsets {
                     IverseNavGraph(
                         navigationDispatcher = navigationDispatcher,
-                        bottomNavigationDispatcher = bottomNavigationDispatcher,
                         lifecycleOwner = this,
                     )
                 }
@@ -43,8 +48,14 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+
+    private fun init() {
+        notificationHelper.createChatNotificationChannel()
+        WindowCompat.setDecorFitsSystemWindows(window, false)
     }
+
+
+
+
 
 }

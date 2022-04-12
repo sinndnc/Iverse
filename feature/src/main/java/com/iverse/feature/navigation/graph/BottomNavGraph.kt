@@ -5,50 +5,38 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.iverse.core.utils.navigation.BottomNavigationDispatcher
-import com.iverse.core.utils.navigation.NavigationDispatcher
-import com.iverse.feature.navigation.content.BottomPages
-import com.iverse.feature.presentation.main.MainViewModel
+import com.iverse.feature.navigation.content.BottomScreens
+import com.iverse.feature.presentation.main.pages.chat.ChatUI
+import com.iverse.feature.presentation.main.pages.chat.ChatViewModel
 import com.iverse.feature.presentation.main.pages.home.HomeUI
 import com.iverse.feature.presentation.main.pages.home.HomeViewModel
-import com.iverse.feature.presentation.main.pages.chat.MessageUI
-import com.iverse.feature.presentation.main.pages.chat.ChatViewModel
 import com.iverse.feature.presentation.main.pages.notification.NotificationUI
 import com.iverse.feature.presentation.main.pages.search.SearchUI
 
 @Composable
-fun ColumnScope.BottomNavGraph(
-    navController: NavHostController,
-    bottomNavigationDispatcher : BottomNavigationDispatcher,
-    lifecycleOwner : LifecycleOwner,
-) {
-    val mainViewModel = hiltViewModel<MainViewModel>()
+fun ColumnScope.BottomNavGraph(navController: NavHostController) {
 
-    Box(modifier = Modifier.weight(0.92F)) {
+    Box(modifier = Modifier.weight(0.92f)) {
         NavHost(
             navController = navController,
-            startDestination = BottomPages.HOME.route
+            startDestination = BottomScreens.HOME.route,
         ) {
-            composable(route = BottomPages.HOME.route) {
+            composable(route = BottomScreens.HOME.route) {
                 val homeViewModel = hiltViewModel<HomeViewModel>()
-                HomeUI(viewModel = homeViewModel, mainViewModel = mainViewModel)
+                HomeUI(viewModel = homeViewModel)
             }
-            composable(route = BottomPages.SEARCH.route) {
+            composable(route = BottomScreens.SEARCH.route) {
                 SearchUI()
             }
-            composable(route = BottomPages.NOTIFICATIONS.route) {
+            composable(route = BottomScreens.NOTIFICATIONS.route) {
                 NotificationUI()
             }
-            composable(route = BottomPages.MESSAGES.route) {
+            composable(route = BottomScreens.CHAT.route) {
                 val messageViewModel = hiltViewModel<ChatViewModel>()
-                MessageUI(viewModel = messageViewModel)
-            }
-            bottomNavigationDispatcher.navigationEmitter.observe(lifecycleOwner) { navigationCommand ->
-                navigationCommand.invoke(navController)
+                ChatUI(viewModel = messageViewModel)
             }
         }
     }

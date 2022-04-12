@@ -5,8 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.iverse.core.utils.navigation.NavigationDispatcher
-import com.iverse.core.utils.navigation.Screens
 import com.iverse.core.utils.qualifiers.DefaultDispatcher
+import com.iverse.feature.navigation.HOME_GRAPH_ROUTE
+import com.iverse.feature.navigation.Screens
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -21,7 +22,7 @@ class SplashViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun redirectToMain() {
-        viewModelScope.launch(dispatcher){
+        viewModelScope.launch(dispatcher) {
             navigationDispatcher.dispatchNavigationCommand { navController ->
                 navController.popBackStack()
                 navController.navigate(Screens.MainUI.route)
@@ -30,8 +31,8 @@ class SplashViewModel @Inject constructor(
     }
 
     //TODO
-    fun redirectToOnBoard(){
-        viewModelScope.launch(dispatcher){
+    fun redirectToOnBoard() {
+        viewModelScope.launch(dispatcher) {
             navigationDispatcher.dispatchNavigationCommand { navController ->
                 navController.popBackStack()
                 navController.navigate(Screens.LoginUI.route)

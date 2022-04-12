@@ -27,14 +27,6 @@ android {
             )
         }
     }
-
-    testOptions {
-        execution = "ANDROIDX_TEST_ORCHESTRATOR"
-
-        unitTests.all {
-            it.useJUnitPlatform()
-        }
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -64,6 +56,7 @@ dependencies {
     implementation(platform(Dependencies.firebaseBom))
     implementation(Dependencies.firebaseFirestore)
     implementation(Dependencies.firebaseAuth)
+    implementation(Dependencies.firebaseMessaging)
     //COMPOSE
     implementation(Dependencies.composeUi)
     implementation(Dependencies.composeMaterial)
@@ -78,12 +71,13 @@ dependencies {
     implementation(Dependencies.jetBrainsKotlin)
     implementation(Dependencies.ktorSerialization)
     implementation(Dependencies.jetBrainSerialization)
-    //TEST
+    //HILT TEST
     kaptTest(TestDependencies.hilt)
     kaptAndroidTest(TestDependencies.hilt)
-    testImplementation(TestDependencies.junit)
     testImplementation(TestDependencies.instrumentedHilt)
     androidTestImplementation(TestDependencies.instrumentedHilt)
+    //MANUAL TEST
+    testImplementation(TestDependencies.junit)
     androidTestImplementation(AndroidTestDependencies.junit)
     androidTestImplementation(AndroidTestDependencies.espresso)
 }

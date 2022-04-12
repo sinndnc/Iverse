@@ -1,6 +1,5 @@
 package com.iverse.core.domain.model
 
-import androidx.annotation.Keep
 import com.google.firebase.firestore.PropertyName
 import com.iverse.core.constant.FirestoreConstants
 import java.util.*
@@ -11,8 +10,8 @@ enum class ChatType { Private, Group }
 
 data class Chat(
 
-    @PropertyName(FirestoreConstants.CHAT_ROOM_RECEIVER_UID)
-    var chatUid: String? = null,
+    @PropertyName(FirestoreConstants.CHAT_ROOM_CHAT_UID)
+    var chatUid: String? = null ,
 
     @PropertyName(FirestoreConstants.CHAT_ROOM_TYPE)
     var chatType: String? = null,
@@ -40,7 +39,6 @@ data class Chat(
     @PropertyName(FirestoreConstants.CHAT_ROOM_MEMBERS)
     var members: List<String>? = null,
 
-    //TODO
     @PropertyName(FirestoreConstants.CHAT_ROOM_MESSAGES)
     var messages: List<Message>? = null
 

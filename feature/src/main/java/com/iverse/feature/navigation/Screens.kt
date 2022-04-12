@@ -1,4 +1,9 @@
-package com.iverse.core.utils.navigation
+package com.iverse.feature.navigation
+
+
+const val ROOT_GRAPH_ROUTE = "root"
+const val AUTH_GRAPH_ROUTE = "auth"
+const val HOME_GRAPH_ROUTE = "home"
 
 sealed class Screens(val route: String) {
     object SplashUI : Screens("splash")
@@ -6,6 +11,5 @@ sealed class Screens(val route: String) {
     object RegisterUI : Screens("register")
     object LoginUI : Screens("login")
     object MainUI : Screens("main")
-    object ChatUI : Screens("chat")
-
+    object ChatRoomUI : Screens("chat")
 }

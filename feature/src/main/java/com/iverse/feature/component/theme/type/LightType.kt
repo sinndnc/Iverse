@@ -99,6 +99,6 @@ val lightTypography = Typography(
         color = Gray.p1000,
         fontFamily = OpenSans,
         fontWeight = FontWeight.Medium,
-        fontSize = 12.sp
+        fontSize = 10.sp
     ),
-    )
+)

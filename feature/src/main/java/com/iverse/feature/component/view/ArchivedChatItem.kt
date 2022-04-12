@@ -40,7 +40,7 @@ fun ArchivedChatItem(
             targetOffsetY = { -(it * 1.5.toInt()) }
         ),
     ) {
-        Box(modifier = Modifier.clickable { onClicked::class.java }) {
+        Box(modifier = Modifier.clickable { onClicked() }) {
             Row(
                 modifier = Modifier
                     .fillMaxSize()

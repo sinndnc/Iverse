@@ -1,4 +1,4 @@
-package com.iverse.core
+package com.iverse.android
 
 import android.app.Application
 import android.content.Context

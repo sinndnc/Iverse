@@ -21,22 +21,19 @@ class ChatRepositoryImpl @Inject constructor(
 
     private val currentUser = firebaseAuth.currentUser!!
 
-    override suspend fun getChatRoomsOfUser(): CollectionReference =
-        withContext(dispatcher) {
-            firestore.collection(FirestoreConstants.USER_COLLECTION)
-                .document(currentUser.uid)
-                .collection(FirestoreConstants.USER_CHAT_COLLECTION)
-        }
+    override fun getChatRoomsOfUser(): CollectionReference =
+        firestore.collection(FirestoreConstants.USER_COLLECTION)
+            .document(currentUser.uid)
+            .collection(FirestoreConstants.USER_CHAT_COLLECTION)
 
 
-    override suspend fun updateTheChatDocumentField(receiverId: String, field: String, value: Any): Task<Void> =
-        withContext(dispatcher) {
+    override fun updateTheChatDocumentField(receiverId: String, field: String, value: Any): Task<Void> =
             firestore.collection(FirestoreConstants.USER_COLLECTION)
                 .document(currentUser.uid)
                 .collection(FirestoreConstants.USER_CHAT_COLLECTION)
                 .document(receiverId)
                 .update(field, value)
-        }
+
 
 
 }

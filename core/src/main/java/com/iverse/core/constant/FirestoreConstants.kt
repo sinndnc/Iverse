@@ -17,12 +17,12 @@ object FirestoreConstants {
 
     const val USER_BLOCKS = "blockedUsers"
 
-    const val USER_MESSAGE_TOKEN = "messageToken"
+    const val USER_TOKEN = "token"
 
     // --------------------- CHAT ROOM collection. -----------------------------------
 
 
-    const val CHAT_ROOM_RECEIVER_UID = "chatUid"
+    const val CHAT_ROOM_CHAT_UID = "chatUid"
 
     const val CHAT_ROOM_IMAGE = "chatImage"
 

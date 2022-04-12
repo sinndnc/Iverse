@@ -29,4 +29,13 @@ class UserRepositoryImpl @Inject constructor(
             .document(userUid)
             .get()
     }
+
+    override fun updateCurrentUserToken(token: String): Task<Void> {
+        val uid = firebaseAuth.currentUser!!.uid
+        return firestore
+            .collection(FirestoreConstants.USER_COLLECTION)
+            .document(uid)
+            .update(FirestoreConstants.USER_TOKEN,token)
+
+    }
 }

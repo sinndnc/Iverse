@@ -5,12 +5,13 @@ import java.util.*
 
 data class Message(
 
-    var message : String = "",
+    var message: String = "",
+
+    var senderId: String? = null,
 
     @field:JvmField
-    var isDeleted : Boolean = false,
+    var isDeleted: Boolean = false,
 
-    var time : Date? = null,
+    var date: Date? = null,
 
-    var senderId : String = ""
 )

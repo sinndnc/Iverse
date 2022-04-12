@@ -1,29 +1,34 @@
 package com.iverse.core.data.repository.chatRoom
 
-import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.*
 import com.iverse.core.constant.FirestoreConstants
+import com.iverse.core.domain.model.Message
 import com.iverse.core.domain.repository.chatRoom.ChatRoomRepository
-import com.iverse.core.utils.qualifiers.IoDispatcher
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class ChatRoomRepositoryImpl @Inject constructor(
-    @IoDispatcher private val dispatcher: CoroutineDispatcher,
     private val firestore: FirebaseFirestore,
+    firebaseAuth: FirebaseAuth,
 ) : ChatRoomRepository {
 
-    //TODO
-    override suspend fun getChatRooms(userUid: String, chatUserUid: String): Task<DocumentSnapshot> =
-        withContext(dispatcher) {
+    private val currentUserUid = firebaseAuth.currentUser!!.uid
+
+    override  fun getChatRooms(chatUserUid: String): DocumentReference =
             firestore.collection(FirestoreConstants.USER_COLLECTION)
-                .document(userUid)
+                .document(currentUserUid)
                 .collection(FirestoreConstants.USER_CHAT_COLLECTION)
                 .document(chatUserUid)
-                .get()
-        }
+
+
+    //TODO
+    override  fun sendMessageToChatRoom(chatRoomUid: String, message: Message) =
+            firestore.collection(FirestoreConstants.USER_COLLECTION)
+                .document(currentUserUid)
+                .collection(FirestoreConstants.USER_CHAT_COLLECTION)
+                .document(chatRoomUid)
+                .update("messages", FieldValue.arrayUnion(message))
+
 
 
 }

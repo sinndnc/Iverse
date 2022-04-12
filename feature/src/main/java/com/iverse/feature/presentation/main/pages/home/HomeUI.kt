@@ -15,7 +15,7 @@ import com.iverse.feature.presentation.main.MainViewModel
 
 
 @Composable
-fun HomeUI(viewModel: HomeViewModel, mainViewModel: MainViewModel) {
+fun HomeUI(viewModel: HomeViewModel) {
     Container(isProcess = false, isHasInternet = NetworkState.CONNECTED) {
         Column(
             modifier = Modifier.fillMaxSize(),

@@ -21,8 +21,8 @@ object Versions {
     //KTOR
     const val KTOR_VERSION = "1.6.7"
     //NAVIGATION
-    const val NAVIGATION_VERSION = "2.4.0-rc01"
-    const val HILT_NAVIGATION_VERSION = "1.0.0-beta01"
+    const val NAVIGATION_VERSION = "2.4.0"
+    const val HILT_NAVIGATION_VERSION = "1.0.0"
     //TEST
     const val JUNIT_VERSION = "4.13.2"
     //ANDROID TEST

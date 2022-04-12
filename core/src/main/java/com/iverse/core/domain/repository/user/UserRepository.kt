@@ -9,4 +9,6 @@ interface UserRepository {
     fun getCurrentUser(): Task<QuerySnapshot>
 
     fun getUserById(userUid: String): Task<DocumentSnapshot>
+
+    fun updateCurrentUserToken(token: String): Task<Void>
 }

@@ -8,8 +8,10 @@ import androidx.lifecycle.viewModelScope
 import com.iverse.core.constant.FirestoreConstants
 import com.iverse.core.domain.model.Chat
 import com.iverse.core.domain.repository.chat.ChatRepository
+import com.iverse.core.utils.navigation.NavigationDispatcher
 import com.iverse.core.utils.qualifiers.IoDispatcher
 import com.iverse.core.utils.state.UiState
+import com.iverse.feature.navigation.Screens
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,8 +22,10 @@ import javax.inject.Inject
 @HiltViewModel
 class ChatViewModel @Inject constructor(
     @IoDispatcher private val dispatcher: CoroutineDispatcher,
+    private val navigationDispatcher: NavigationDispatcher,
     private val chatRepository: ChatRepository
 ) : ViewModel() {
+
 
     /**
      * this variable is keeps chats owned by current user for this class
@@ -46,9 +50,16 @@ class ChatViewModel @Inject constructor(
 
 
     init {
-        getCurrentUserAndChats()
+        getCurrentUserChats()
     }
 
+
+    override fun onCleared() {
+        super.onCleared()
+        _chats.value = emptyList()
+        _archivedChats.value = emptyList()
+        _blockedChats.value = emptyList()
+    }
 
     /**
      * this method provides to get current user data and also fetch chat
@@ -57,37 +68,35 @@ class ChatViewModel @Inject constructor(
      * @sample deleteBlockedRoomsAndMessages
      * @sample addRoomToArchive
      */
-    private fun getCurrentUserAndChats() {
-        viewModelScope.launch(dispatcher) {
-            chatRepository.getChatRoomsOfUser().addSnapshotListener { snapshot, error ->
-                if (error != null) {
-                    _uiState.value = UiState.Error
-                    return@addSnapshotListener
+    private fun getCurrentUserChats() {
+        chatRepository.getChatRoomsOfUser().addSnapshotListener { snapshot, error ->
+            if (error != null) {
+                _uiState.value = UiState.Error
+                return@addSnapshotListener
+            }
+            if (snapshot != null && snapshot.documents.isNotEmpty()) {
+                val chats = mutableStateListOf<Chat>()
+                for (doc in snapshot.documents) {
+                    doc.toObject(Chat::class.java)?.let { chats.add(it) }
                 }
-                if (snapshot != null && snapshot.documents.isNotEmpty()) {
-                    val chats = mutableStateListOf<Chat>()
-                    for (doc in snapshot.documents) {
-                        doc.toObject(Chat::class.java)?.let { chats.add(it) }
-                    }
-                    getChatRoomsWithMessages(chats)
-                    chats.removeAll(deleteBlockedRoomsAndMessages(chats))
-                    chats.removeAll(addRoomToArchive(chats))
-                    _chats.value = chats
-                    _uiState.value = UiState.Success
-                }
+                getChatRoomsWithMessages(chats)
+                chats.removeAll(deleteBlockedRoomsAndMessages(chats))
+                chats.removeAll(addRoomToArchive(chats))
+                _chats.value = chats
+                _uiState.value = UiState.Success
             }
         }
+
     }
 
 
     fun addRoomToArchive(chat: Chat, value: Boolean) {
-        viewModelScope.launch {
-            chatRepository.updateTheChatDocumentField(
-                chat.chatUid!!,
-                FirestoreConstants.CHAT_ROOM_IS_ARCHIVED,
-                value
-            )
-        }
+        chatRepository.updateTheChatDocumentField(
+            chat.chatUid!!,
+            FirestoreConstants.CHAT_ROOM_IS_ARCHIVED,
+            value
+        )
+
     }
 
 
@@ -125,7 +134,7 @@ class ChatViewModel @Inject constructor(
     }
 
     /**
-     * This method provides to add all room owned by the user but
+     * This method provides to add all room owned by the user.
      * Selects only the chat rooms which have at least 1 message.
      * @param rawData is all chat rooms owned by the user
      * @return List<[Chat]> of current user least a message in a chat room
@@ -138,5 +147,11 @@ class ChatViewModel @Inject constructor(
             }
         }
         return chatsWithMessages
+    }
+
+    fun navigateToChatRoom(chatUid: String) {
+        navigationDispatcher.dispatchNavigationCommand { navController ->
+            navController.navigate(Screens.ChatRoomUI.route + "/$chatUid")
+        }
     }
 }

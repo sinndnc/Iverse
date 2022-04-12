@@ -78,6 +78,7 @@ dependencies {
     implementation(platform(Dependencies.firebaseBom))
     implementation(Dependencies.firebaseFirestore)
     implementation(Dependencies.firebaseAuth)
+    implementation(Dependencies.firebaseMessaging)
     //CORE
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)

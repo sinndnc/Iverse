@@ -51,8 +51,7 @@ android {
         kotlinCompilerExtensionVersion = Versions.COMPOSE_VERSION
     }
     packagingOptions {
-        resources.excludes.add("META-INF/AL2.0")
-        resources.excludes.add("META-INF/LGPL2.1")
+        resources.excludes.add("META-INF/*")
     }
 }
 
@@ -81,6 +80,7 @@ dependencies {
     implementation(Dependencies.firebaseFirestore)
     implementation(Dependencies.firebaseAnalytics)
     implementation(Dependencies.firebaseAuth)
+    implementation(Dependencies.firebaseMessaging)
     //CORE
     implementation(Dependencies.core)
     implementation(Dependencies.appCompat)
@@ -93,7 +93,12 @@ dependencies {
     implementation(Dependencies.ktorCore)
     implementation(Dependencies.ktorSerialization)
     implementation(Dependencies.jetBrainSerialization)
-    //TEST
+    //HILT TEST
+    kaptTest(TestDependencies.hilt)
+    kaptAndroidTest(TestDependencies.hilt)
+    testImplementation(TestDependencies.instrumentedHilt)
+    androidTestImplementation(TestDependencies.instrumentedHilt)
+    //MANUAL TEST
     testImplementation(TestDependencies.junit)
     androidTestImplementation(AndroidTestDependencies.junit)
     androidTestImplementation(AndroidTestDependencies.espresso)

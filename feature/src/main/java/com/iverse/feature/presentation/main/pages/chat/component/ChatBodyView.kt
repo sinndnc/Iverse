@@ -3,6 +3,7 @@ package com.iverse.feature.presentation.main.pages.chat.component
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -17,9 +18,8 @@ import com.iverse.feature.component.view.ArchivedChatItem
 import com.iverse.feature.presentation.main.pages.chat.ChatViewModel
 
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun MessageBodyView(viewModel: ChatViewModel) {
+fun ColumnScope.ChatBodyView(viewModel: ChatViewModel) {
 
     val state = viewModel.uiState
     val chats = viewModel.chats.collectAsState()
@@ -34,14 +34,14 @@ fun MessageBodyView(viewModel: ChatViewModel) {
             CircularProgressIndicator(color = Color.Black)
         }
     } else if (state.value is UiState.Success) {
-        LazyColumn {
+        LazyColumn(modifier = Modifier.weight(1f)) {
             item {
                 ArchivedChatItem(
                     hasArchivedChat = hasArchivedChat,
                     value = archivedChats.value.size
                 ) {
                     //TODO
-                    viewModel.addRoomToArchive(archivedChats.value[0],false)
+                    viewModel.addRoomToArchive(archivedChats.value[0], false)
                 }
             }
             itemsIndexed(chats.value) { position, chat ->
@@ -49,8 +49,8 @@ fun MessageBodyView(viewModel: ChatViewModel) {
                     chat = chat,
                     position = position,
                     onDeleted = { },
-                    onArchived = { viewModel.addRoomToArchive(chat,true) },
-                    onClicked = { }
+                    onArchived = { viewModel.addRoomToArchive(chat, true) },
+                    onClicked = { viewModel.navigateToChatRoom(chat.chatUid!!) }
                 )
             }
         }

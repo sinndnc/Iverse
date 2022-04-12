@@ -35,7 +35,7 @@ fun ChatItem(
     chat: Chat,
     onDeleted: () -> Unit,
     onArchived: () -> Unit,
-    onClicked: (position: Int) -> Unit,
+    onClicked: () -> Unit,
 ) {
     val scope = rememberCoroutineScope()
     val materialTheme = MaterialTheme.colors
@@ -79,7 +79,7 @@ fun ChatItem(
             .swipeable(
                 state = swipeableState,
                 orientation = Orientation.Horizontal,
-                thresholds = { _, _ -> FractionalThreshold(0.85F) },
+                thresholds = { _, _ -> FractionalThreshold(1F) },
                 anchors = mapOf(
                     0f to SwipeDirectionState.MIDDLE,
                     maxWidth / 2.5F to SwipeDirectionState.RIGHT,
@@ -93,7 +93,7 @@ fun ChatItem(
                 userName = chat.chatName,
                 lastMessageText = chat.lastMessageText!!,
                 hasMessage = false,
-                onClicked = onClicked
+                onClicked = { onClicked() }
             )
         } else if (chat.chatType == ChatType.Group.name) {
             GroupChatCard(
@@ -101,7 +101,7 @@ fun ChatItem(
                 lastMessageText = chat.lastMessageText!!,
                 hasMessage = true,
                 lastMessageUserName = "Sindnnc",
-                onClicked = onClicked
+                onClicked = { onClicked() }
             )
         }
 
@@ -115,13 +115,13 @@ private fun OneToOneChatCard(
     hasMessage: Boolean,
     lastMessageText: String,
     userImage: String = "",
-    onClicked: (position: Int) -> Unit
+    onClicked: () -> Unit
 ) {
     Row(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colors.background)
-            .clickable { onClicked::class.java }
+            .clickable { onClicked() }
             .padding(10.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly
@@ -155,13 +155,13 @@ private fun GroupChatCard(
     groupImage: String = "",
     lastMessageText: String,
     lastMessageUserName: String,
-    onClicked: (position: Int) -> Unit
+    onClicked: () -> Unit
 ) {
     Row(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colors.background)
-            .clickable { onClicked::class.java }
+            .clickable { onClicked() }
             .padding(10.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly

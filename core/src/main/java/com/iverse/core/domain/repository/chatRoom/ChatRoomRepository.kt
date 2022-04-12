@@ -1,10 +1,13 @@
 package com.iverse.core.domain.repository.chatRoom
 
 import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.DocumentReference
+import com.iverse.core.domain.model.Message
 
 interface ChatRoomRepository {
 
-    suspend fun getChatRooms(userUid : String, chatUserUid : String) : Task<DocumentSnapshot>
+     fun getChatRooms(chatUserUid: String): DocumentReference
+
+     fun sendMessageToChatRoom(chatRoomUid: String, message: Message): Task<Void>
 
 }

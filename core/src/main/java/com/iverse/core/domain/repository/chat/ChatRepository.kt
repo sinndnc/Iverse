@@ -7,7 +7,7 @@ import com.google.firebase.firestore.QuerySnapshot
 
 interface ChatRepository {
 
-  suspend fun getChatRoomsOfUser() : CollectionReference
+   fun getChatRoomsOfUser() : CollectionReference
 
-  suspend fun updateTheChatDocumentField(receiverId: String, field: String, value: Any) : Task<Void>
+   fun updateTheChatDocumentField(receiverId: String, field: String, value: Any) : Task<Void>
 }
